@@ -1,0 +1,30 @@
+@use '../abstract/mixin' as mx;
+@use '../abstract/variables' as var;
+@use 'sass:map';
+
+.mainPage{
+    background-color: map.get(var.$colors, intro-bg);
+    height: 100vh;
+    @include mx.flex-center();
+
+}
+
+.pageContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    color: white;
+
+    &__firstRow{
+        font-family: 'MyAlmarai';
+        font-weight: 400;
+        font-size: map.get(var.$sizes, xxl);
+    }
+
+    &__secondRow{
+        font-family: 'MyRose';
+        font-weight: 700;
+        font-size: 140px;
+    }
+}
+
