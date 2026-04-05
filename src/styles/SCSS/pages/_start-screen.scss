@@ -28,3 +28,9 @@
     }
 }
 
+.controlContainer{
+    @include mx.flex-center();
+    width: 100%;
+    padding-top: 40px;
+}
+
