@@ -1,0 +1,93 @@
+@use '../abstract/mixin' as mx;
+@use '../abstract/variables' as var;
+@use 'sass:map';
+
+.radioGroup{
+    border: 0;
+    padding: 0;
+    margin: 0;
+    min-inline-size: 0;
+    width: 100%;
+    font-family: 'MyAlmarai';
+    color: map.get(var.$colors, intro-bg);
+    @include mx.flex-start();
+    gap: map.get(var.$sizes, s);
+
+    // &:hover input[type="radio"]:checked::before{
+    //     transform: scale(0);
+    // }
+
+    // &:has(.radio:hover) input[type="radio"]:checked::before {
+    //     transform: scale(0);
+    // }
+
+    &__caption{
+        @include mx.flex-center(row);
+        gap: map.get(var.$sizes, s);
+        padding-bottom: map.get(var.$sizes, m);
+    }
+
+    &__icon{
+        width: map.get(var.$sizes, xl);
+        height: map.get(var.$sizes, xl);;
+    }
+
+    &__text{
+        font-size: 24px;
+        font-weight: 700;
+    }
+}
+
+.radio{
+    padding-left: 35px;
+    cursor: pointer;
+    @include mx.flex-center(row);
+    gap: 12px;
+    // width: 100%;
+
+    input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+
+        width: 18px;
+        height: 18px;
+        border: 2px solid #000; 
+        border-radius: 50%;
+        display: grid;
+        place-content: center;
+        margin: 0;
+    }
+
+    // innerer Punkt (default unsichtbar)
+    input[type="radio"]::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        transform: scale(0);
+        transition: transform 120ms ease-in-out;
+        background-color: #000;
+    }
+
+     // checked Zustand → kleiner Punkt
+    input[type="radio"]:checked::before {
+        transform: scale(0.6); // <- kleiner innerer Kreis
+    }
+
+    // &:hover input[type="radio"]::before {
+    //     transform: scale(0.6);
+    // }
+
+    &__label{
+        font-size: 20px;
+        // padding-left: map.get(var.$sizes, s);
+        white-space: nowrap;
+
+        &--highlight{
+            font-size: 20px;
+            // padding-left: map.get(var.$sizes, s);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+    }
+}

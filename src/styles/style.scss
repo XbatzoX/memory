@@ -4,8 +4,13 @@
 @use './SCSS/base/fonts';
 @use './SCSS/components/buttons';
 @use './SCSS/components/dividers';
+@use './SCSS/components/radio-group';
 
 body{
     box-sizing: border-box;
     margin: 0;
+}
+
+.width{
+    width: 50px;
 }

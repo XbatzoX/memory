@@ -4,9 +4,11 @@
 
 .settingsFrame{
     @include mx.flex-start();
+    gap: 50px;
     padding: 100px;
     color: map.get(var.$colors, intro-bg);
 }
+
 
 .captionContainer{
    @include mx.flex-center();
@@ -21,4 +23,14 @@
 
 .distance{
     transform: translateY(10px);
+}
+
+.settingsContent{
+    display: flex;
+    width: 100%;
+
+    &__left{
+        width: 400px;
+        @include mx.flex-start();
+    }
 }
