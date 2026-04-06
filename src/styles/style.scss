@@ -1,8 +1,9 @@
 @use './SCSS/pages/start-screen';
+@use './SCSS/pages/settings-screen';
 @use './SCSS/base/spacing';
 @use './SCSS/base/fonts';
 @use './SCSS/components/buttons';
-@use './SCSS/components/_dividers.scss';
+@use './SCSS/components/dividers';
 
 body{
     box-sizing: border-box;

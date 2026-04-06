@@ -1,0 +1,27 @@
+@use '../abstract/variables' as var;
+@use '../abstract/mixin' as mx;
+@use 'sass:map';
+@use 'sass:math';
+
+@each $name, $deg in var.$degrees{
+    .divider-#{$name}{
+        @include mx.flex-center(row);
+        width: 100%;
+        transform: rotate($deg);
+    }
+}
+
+@each $name, $size in var.$squareSizes{
+    .divider__square-#{$name}{
+        height: $size;
+        width: $size;
+        background-color: map.get(var.$colors, intro-btn);
+        transform: rotate(45deg);
+    }
+
+    .divider__line-#{$name}{
+        flex: 1;
+        background-color: map.get(var.$colors, intro-btn);
+        height: math.div($size, 10);
+    }
+}

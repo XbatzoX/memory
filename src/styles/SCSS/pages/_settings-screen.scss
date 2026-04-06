@@ -1,0 +1,24 @@
+@use '../abstract/mixin' as mx;
+@use '../abstract/variables' as var;
+@use 'sass:map';
+
+.settingsFrame{
+    @include mx.flex-start();
+    padding: 100px;
+    color: map.get(var.$colors, intro-bg);
+}
+
+.captionContainer{
+   @include mx.flex-center();
+
+    &__text{
+        font-family: 'MyRose';
+        font-size: 54px;
+        font-weight: 700;
+        padding-left: 20px;
+    }
+}
+
+.distance{
+    transform: translateY(10px);
+}
