@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
+
+    <link rel="shortcut icon" href="./assets/icons/stadia_controller.svg" type="image/x-icon">
 </head>
 <body>
     <section class="settingsFrame">
@@ -21,20 +23,20 @@
                         <img class="radioGroup__icon" src="../assets/icons/game_themes_icon.svg" alt="theme icon">
                         <span class="radioGroup__text">Game themes</span>
                     </legend>
-                    <label class="radio">
+                    <label id="label_code_theme" class="radio">
                         <input type="radio" name="theme" value="code_vibes">
-                        <span class="radio__label">Code vibes theme</span>
-                        <div class="width">
+                        <span id="span_code_theme" class="radio__label">Code vibes theme</span>
+                        <div id="divider_code_theme" class="width invisible">
                             <div class="divider-half">
                                 <div class="divider__square-s"></div>
                                 <div class="divider__line-xl"></div>
                             </div>
                         </div>
                     </label>
-                    <label class="radio">
+                    <label id="label_food_theme" class="radio">
                         <input type="radio" name="theme" value="food_theme">
-                        <span class="radio__label">Foods theme</span>
-                        <div class="width">
+                        <span id="span_food_theme" class="radio__label">Foods theme</span>
+                        <div id="divider_food_theme" class="width invisible">
                             <div class="divider-half">
                                 <div class="divider__square-s"></div>
                                 <div class="divider__line-xl"></div>
