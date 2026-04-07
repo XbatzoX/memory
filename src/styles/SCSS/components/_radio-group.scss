@@ -43,7 +43,6 @@
     cursor: pointer;
     @include mx.flex-center(row);
     gap: 12px;
-    // width: 100%;
 
     input[type="radio"] {
         appearance: none;
@@ -51,11 +50,15 @@
 
         width: 18px;
         height: 18px;
-        border: 2px solid #000; 
+        border: 3px solid #000; 
         border-radius: 50%;
         display: grid;
         place-content: center;
         margin: 0;
+    }
+
+    input[type="radio"]:checked{
+        border: 2px solid #000; 
     }
 
     // innerer Punkt (default unsichtbar)
@@ -74,18 +77,12 @@
         transform: scale(0.6); // <- kleiner innerer Kreis
     }
 
-    // &:hover input[type="radio"]::before {
-    //     transform: scale(0.6);
-    // }
-
     &__label{
         font-size: 20px;
-        // padding-left: map.get(var.$sizes, s);
         white-space: nowrap;
 
         &--highlight{
             font-size: 20px;
-            // padding-left: map.get(var.$sizes, s);
             font-weight: 700;
             white-space: nowrap;
         }

@@ -32,5 +32,6 @@
     &__left{
         width: 400px;
         @include mx.flex-start();
+        gap: map.get(var.$sizes, xxl);
     }
 }
