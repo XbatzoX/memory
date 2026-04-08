@@ -34,4 +34,24 @@
         @include mx.flex-start();
         gap: map.get(var.$sizes, ultra);
     }
+
+    &__right{
+        @include mx.flex-end();
+        gap: map.get(var.$sizes, xxl);
+
+        &__image{
+            width: 460px;
+            height: 412px;
+        }
+    }
+}
+
+.settingsState{
+    padding: 12px 20px;
+    background-color: map.get(var.$colors, status-set);
+
+    &__box{
+        @include mx.flex-center(row);
+        gap: map.get(var.$sizes, s);
+    }
 }
