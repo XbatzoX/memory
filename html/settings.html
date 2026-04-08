@@ -49,9 +49,104 @@
                         <img class="radioGroup__icon" src="../assets/icons/choose_player_icon.svg" alt="choose player icon as chess piece">
                         <span class="radioGroup__text">Choose player</span>
                     </legend>
+                    <label id="label_blue_player" class="radio">
+                        <input type="radio" name="player" value="blue">
+                        <span id="span_blue_player" class="radio__label">Blue</span>
+                        <div id="divider_blue_player" class="width invisible">
+                            <div class="divider-half">
+                                <div class="divider__square-s"></div>
+                                <div class="divider__line-xl"></div>
+                            </div>
+                        </div>
+                    </label>
+                    <label id="label_orange_player" class="radio">
+                        <input type="radio" name="player" value="orange">
+                        <span id="span_orange_player" class="radio__label">Orange</span>
+                        <div id="divider_orange_player" class="width invisible">
+                            <div class="divider-half">
+                                <div class="divider__square-s"></div>
+                                <div class="divider__line-xl"></div>
+                            </div>
+                        </div>
+                    </label>
+                </fieldset>
+                <fieldset class="radioGroup">
+                    <legend class="radioGroup__caption">
+                        <img class="radioGroup__icon" src="../assets/icons/board_size_icon.svg" alt="board size icon as swing card">
+                        <span class="radioGroup__text">Board size</span>
+                    </legend>
+                    <label id="label_16_cards" class="radio">
+                        <input type="radio" name="board_size" value="sixteen">
+                        <span id="span_16_cards" class="radio__label">16 cards</span>
+                        <div id="divider_16_cards" class="width invisible">
+                            <div class="divider-half">
+                                <div class="divider__square-s"></div>
+                                <div class="divider__line-xl"></div>
+                            </div>
+                        </div>
+                    </label>
+                    <label id="label_24_cards" class="radio">
+                        <input type="radio" name="board_size" value="twentyfour">
+                        <span id="span_24_cards" class="radio__label">24 cards</span>
+                        <div id="divider_24_cards" class="width invisible">
+                            <div class="divider-half">
+                                <div class="divider__square-s"></div>
+                                <div class="divider__line-xl"></div>
+                            </div>
+                        </div>
+                    </label>
+                    <label id="label_36_cards" class="radio">
+                        <input type="radio" name="board_size" value="thirtysix">
+                        <span id="span_36_cards" class="radio__label">36 cards</span>
+                        <div id="divider_36_cards" class="width invisible">
+                            <div class="divider-half">
+                                <div class="divider__square-s"></div>
+                                <div class="divider__line-xl"></div>
+                            </div>
+                        </div>
+                    </label>
                 </fieldset>
             </div>
-            <div class="settingsContent__right"></div>
+            <div class="settingsContent__right">
+                <img id="theme_image" class="settingsContent__right__image" src="../assets/img/image_code_vibes_theme.svg" alt="image with preview of code theme">
+                <div class="settingsState">
+                    <div class="settingsState__box">
+                        <span id="state_theme" class="settingsState__box__text">Game theme</span>
+                        <div id="divider_state_theme" class="width">
+                            <div class="divider-eighth invisible">
+                                <div class="divider__square-zero"></div>
+                                <div class="divider__line-xxl"></div>
+                            </div>
+                        </div>
+                        <div id="divider_theme_choosen" class="width">
+                            <div class="divider-eighth">
+                                <div class="divider__square-s"></div>
+                                <div class="divider__line-xl"></div>
+                            </div>
+                        </div>
+                        <span id="state_player" class="settingsState__box__text">Player</span>
+                        <div id="divider_state_player" class="width">
+                            <div class="divider-eighth invisible">
+                                <div class="divider__square-zero"></div>
+                                <div class="divider__line-xxl"></div>
+                            </div>
+                        </div>
+                        <div id="divider_player_choosen" class="width">
+                            <div class="divider-eighth">
+                                <div class="divider__square-s"></div>
+                                <div class="divider__line-xl"></div>
+                            </div>
+                        </div>
+                        <span id="state_board" class="settingsState__box__text">Board size</span>
+                        <div class="controlContainer">
+                            <div id="start_button" class="yellowBtn yellowBtn--highlight disabled">
+                                <img class="yellowBtn__img1" src="../assets/icons/start_icon.svg" alt="play icon with border">
+                                <span class="yellowBtn__text">Start</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>  
 

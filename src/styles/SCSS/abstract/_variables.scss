@@ -4,13 +4,15 @@ $sizes:(
     m: 16px,
     l: 24px,
     xl: 32px,
-    xxl: 48px
+    xxl: 48px,
+    ultra: 64px
 );
 
 $colors:(
     intro-bg: #303131,
     intro-btn: #f0ea6e,
-    status-set: #F6F6F6
+    status-set: #F6F6F6,
+    btn-disabled: #D9D9D9
 );
 
 $degrees:(
@@ -20,7 +22,7 @@ $degrees:(
     half: -180deg
 );
 
-$squareSizes:(
+$normSizes:(
     s: 10px,
     m: 15px,
     l: 20px,
