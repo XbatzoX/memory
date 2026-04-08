@@ -5,12 +5,19 @@
 .yellowBtn{
     @include mx.flex-center(row);
     gap: map.get(var.$sizes, m);
-    background-color: map.get(var.$colors, intro-btn);
     padding: 12px;
     border: none;
     cursor: pointer;
     transition: transform 200ms ease, box-shadow 200ms ease;
     
+    &__enabled{
+        background-color: map.get(var.$colors, intro-btn);
+    }
+
+    &__disabled{
+        background-color: map.get(var.$colors, btn-disabled);
+    }
+
     &__img1{
         width: 44px;
         height: 32px;

@@ -4,6 +4,23 @@
     .padding-#{$name}{
         padding: $size;
     }
+
+    .padding-left-#{$name}{
+        padding-left: $size;
+    }
+
+    .padding-top-#{$name}{
+        padding-top: $size;
+    }
+
+    .padding-right-#{$name}{
+        padding-right: $size;
+    }
+
+    .padding-bottom-#{$name}{
+        padding-bottom: $size;
+    }
+
     .margin-#{$name}{
         margin: $size;
     }

@@ -1,3 +1,5 @@
+import * as data from './dataObj';
+
 function radioHoverEffect(idSpan:string, idDiv:string):void{
     const contentSpanRef = document.getElementById(idSpan);
     const contentDivRef = document.getElementById(idDiv);
@@ -67,6 +69,7 @@ inputTheme.forEach(input => {
 function actionsCodeTheme(input:HTMLInputElement):void{
     if(input.value == 'code_vibes'){
         if(input.checked){
+            data.gameSettings.theme = 'code_vibes';
             radioHoverEffect('span_code_theme', 'divider_code_theme');
             radioNormalView('span_food_theme', 'divider_food_theme');
         }else{

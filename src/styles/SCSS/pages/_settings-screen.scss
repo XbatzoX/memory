@@ -3,6 +3,8 @@
 @use 'sass:map';
 
 .settingsFrame{
+    max-width: 1100px;
+    margin: 0 auto;
     @include mx.flex-start();
     gap: 50px;
     padding: 100px;
@@ -28,6 +30,7 @@
 .settingsContent{
     display: flex;
     width: 100%;
+    justify-content: space-between;
 
     &__left{
         width: 400px;
@@ -53,5 +56,10 @@
     &__box{
         @include mx.flex-center(row);
         gap: map.get(var.$sizes, s);
+
+        &__text{
+            white-space: nowrap;
+            font-family: 'MyAlmarai';
+        }
     }
 }
