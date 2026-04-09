@@ -37,10 +37,10 @@ export function checkInputValuePlayer():boolean{
             let contentDividerTheme = document.getElementById('divider_state_player');
             let contentDividerChoosen = document.getElementById('divider_player_choosen');
             if(index == 0){
-                if(contentSpan){contentSpan.innerText = 'Blue';}
+                if(contentSpan){contentSpan.innerText = 'Blue Player';}
             }
             if(index == 1){
-                if(contentSpan){contentSpan.innerText = 'Orange';}
+                if(contentSpan){contentSpan.innerText = 'Orange Player';}
             }
             if(contentDividerTheme){contentDividerTheme.classList.add('invisible');}
             if(contentDividerChoosen){contentDividerChoosen.classList.remove('invisible');}
@@ -48,4 +48,37 @@ export function checkInputValuePlayer():boolean{
         }
     }
     return valid;
+}
+
+export function checkInputValueBoardSize():boolean{
+    let valid = false;
+    let value = data.gameSettings.boardSize;
+
+    for(let index = 0; index < boardSizeArr.length; index++){
+        if(value == boardSizeArr[index]){
+            let contentSpan = document.getElementById('state_board');
+            if(index == 0){
+                if(contentSpan){contentSpan.innerText = 'Board-16 Cards';}
+            }
+            if(index == 1){
+                if(contentSpan){contentSpan.innerText = 'Board-24 Cards';}
+            }
+            if(index == 2){
+                if(contentSpan){contentSpan.innerText = 'Board-36 Cards';}
+            }
+            valid = true;
+        }
+    }
+    return valid;
+}
+
+export function checkGameSettings(themeValid:boolean, playerValid:boolean, boardSizeValid:boolean):void{
+    if(themeValid && playerValid && boardSizeValid){
+        let contentButtonRef = document.getElementById('start_button');
+        if(contentButtonRef){
+            contentButtonRef.classList.remove('yellowBtn__disabled');
+            contentButtonRef.classList.add('yellowBtn__enabled');
+            contentButtonRef.classList.add('yellowBtn--highlight');
+        }
+    }
 }

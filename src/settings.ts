@@ -3,6 +3,7 @@ import * as stateSettings from './stateSettings';
 
 let validTheme = false;
 let validPlayer = false;
+let validBoardSize = false;
 
 function radioHoverEffect(idSpan:string, idDiv:string):void{
     const contentSpanRef = document.getElementById(idSpan);
@@ -68,6 +69,7 @@ inputTheme.forEach(input => {
         actionsCodeTheme(input);
         actionsFoodTheme(input);
         validTheme =  stateSettings.checkInputValueTheme();
+        stateSettings.checkGameSettings(validTheme, validPlayer, validBoardSize);
     });
 });
 
@@ -127,6 +129,7 @@ inputPlayer.forEach(input => {
         actionsBluePlayer(input);
         actionsOrangePlayer(input);
         validPlayer = stateSettings.checkInputValuePlayer();
+        stateSettings.checkGameSettings(validTheme, validPlayer, validBoardSize);
     });
 });
 
@@ -199,12 +202,15 @@ inputBoardSize.forEach(input => {
         actions16Cards(input);
         actions24Cards(input);
         actions36Cards(input);
+        validBoardSize = stateSettings.checkInputValueBoardSize();
+        stateSettings.checkGameSettings(validTheme, validPlayer, validBoardSize);
     });
 });
 
 function actions16Cards(input:HTMLInputElement):void{
     if(input.value == 'sixteen'){
         if(input.checked){
+            data.gameSettings.boardSize = 16;
             radioHoverEffect('span_16_cards', 'divider_16_cards');
             radioNormalView('span_24_cards', 'divider_24_cards');
             radioNormalView('span_36_cards', 'divider_36_cards');
@@ -217,6 +223,7 @@ function actions16Cards(input:HTMLInputElement):void{
 function actions24Cards(input:HTMLInputElement):void{
     if(input.value == 'twentyfour'){
         if(input.checked){
+            data.gameSettings.boardSize = 24;
             radioHoverEffect('span_24_cards', 'divider_24_cards');
             radioNormalView('span_16_cards', 'divider_16_cards');
             radioNormalView('span_36_cards', 'divider_36_cards');
@@ -229,6 +236,7 @@ function actions24Cards(input:HTMLInputElement):void{
 function actions36Cards(input:HTMLInputElement):void{
     if(input.value == 'thirtysix'){
         if(input.checked){
+            data.gameSettings.boardSize = 36;
             radioHoverEffect('span_36_cards', 'divider_36_cards');
             radioNormalView('span_16_cards', 'divider_16_cards');
             radioNormalView('span_24_cards', 'divider_24_cards');
