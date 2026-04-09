@@ -1,4 +1,8 @@
 import * as data from './dataObj';
+import * as stateSettings from './stateSettings';
+
+let validTheme = false;
+let validPlayer = false;
 
 function radioHoverEffect(idSpan:string, idDiv:string):void{
     const contentSpanRef = document.getElementById(idSpan);
@@ -63,6 +67,7 @@ inputTheme.forEach(input => {
     input.addEventListener('change', () => {
         actionsCodeTheme(input);
         actionsFoodTheme(input);
+        validTheme =  stateSettings.checkInputValueTheme();
     });
 });
 
@@ -81,6 +86,7 @@ function actionsCodeTheme(input:HTMLInputElement):void{
 function actionsFoodTheme(input:HTMLInputElement):void{
     if(input.value == 'food_theme'){
         if(input.checked){
+            data.gameSettings.theme = 'food_theme';
             radioHoverEffect('span_food_theme', 'divider_food_theme');
             radioNormalView('span_code_theme', 'divider_code_theme');
         }else{
@@ -120,12 +126,14 @@ inputPlayer.forEach(input => {
     input.addEventListener('change', () => {
         actionsBluePlayer(input);
         actionsOrangePlayer(input);
+        validPlayer = stateSettings.checkInputValuePlayer();
     });
 });
 
 function actionsBluePlayer(input:HTMLInputElement):void{
     if(input.value == 'blue'){
         if(input.checked){
+            data.gameSettings.player = 'blue';
             radioHoverEffect('span_blue_player', 'divider_blue_player');
             radioNormalView('span_orange_player', 'divider_orange_player');
         }else{
@@ -137,6 +145,7 @@ function actionsBluePlayer(input:HTMLInputElement):void{
 function actionsOrangePlayer(input:HTMLInputElement):void{
     if(input.value == 'orange'){
         if(input.checked){
+            data.gameSettings.player = 'orange';
             radioHoverEffect('span_orange_player', 'divider_orange_player');
             radioNormalView('span_blue_player', 'divider_blue_player');
         }else{
