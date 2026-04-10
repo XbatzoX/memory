@@ -1,4 +1,60 @@
+@use '../abstract/mixin' as mx;
+@use '../abstract/variables' as var;
+@use 'sass:map';
+
 .gameHeader{
     max-width: 1440px;
     margin: 0 auto;
+
+    &__container-code_vibes{
+        display: flex;
+    }
+
+    &__container-food_theme{
+        display: flex;
+    }
+}
+
+.playerContainer-code_vibes{
+    @include mx.flex-center(row);
+    gap: map.get(var.$sizes, m);
+    font-family: 'MyDevanagari';
+    font-weight: 700;
+    font-size: map.get(var.$sizes, l);
+
+    &__box{
+        @include mx.flex-center(row);
+        gap: map.get(var.$sizes, s);
+    }
+
+    &__valueBlue{
+        padding-top: map.get(var.$sizes, s);
+        color: map.get(var.$colors, blue-player);
+    }
+
+    &__valueOrange{
+        padding-top: map.get(var.$sizes, s);
+        color: map.get(var.$colors, orange-player);
+    }
+}
+
+.playerContainer-food_theme{
+    @include mx.flex-center(row);
+    gap: map.get(var.$sizes, m);
+    font-family: 'MyUnicase';
+    font-weight: 700;
+    font-size: map.get(var.$normSizes, xl);
+
+    &__box{
+        @include mx.flex-center(row);
+        gap: map.get(var.$sizes, s);
+    }
+
+    &__valueBlue{
+        color: map.get(var.$colors, blue-player);
+    }
+
+    &__valueOrange{
+        color: map.get(var.$colors, orange-player);
+    }
 }

@@ -11,3 +11,17 @@
     font-weight: 100 900;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'MyDevanagari';
+    src: url('/assets/fonts/Noto_Sans_Devanagari/NotoSansDevanagari-VariableFont_wdth,wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'MyUnicase';
+    src: url('/assets/fonts/Delius_Unicase/DeliusUnicase-Regular.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+}
