@@ -22,22 +22,29 @@ if(contentButtonRef){
 function initGame():void{
     loadDataFromLocalStorage();
     checkCodeTheme();
+    checkFoodTheme();
     const contentHeaderRef = document.getElementById('game_header');
     if(contentHeaderRef){
-        contentHeaderRef.innerHTML = temp.renderHeaderCodeTheme();   
+        contentHeaderRef.innerHTML = temp.renderHeader(myGameObj.theme);   
     }
 }
 
 function loadDataFromLocalStorage():void{
     let data = localStorage.getItem('myGameSettings');
-    if(data){myGameObj = JSON.parse(data);} 
-    console.log(data);   
+    if(data){myGameObj = JSON.parse(data);}   
 }
 
 function checkCodeTheme():void{
     if(myGameObj.theme == 'code_vibes'){
         const contentBodyRef = document.getElementById('body_game');
         if(contentBodyRef){contentBodyRef.classList.add('body-bg-code-theme');}
+    }
+}
+
+function checkFoodTheme():void{
+    if(myGameObj.theme == 'food_theme'){
+        const contentBodyRef = document.getElementById('body_game');
+        if(contentBodyRef){contentBodyRef.classList.add('body-bg-food-theme');}
     }
 }
 
