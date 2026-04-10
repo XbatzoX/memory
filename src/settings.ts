@@ -41,11 +41,13 @@ const labelCodeTheme = document.getElementById('label_code_theme');
 if(labelCodeTheme){
     labelCodeTheme.addEventListener('mouseover', () => {
         radioHoverEffect('span_code_theme', 'divider_code_theme');
+        changeThemeImage('theme_image', '/assets/img/image_code_vibes_theme.svg');
     });
     labelCodeTheme.addEventListener('mouseout', () => {
         const inputCodeTheme = labelCodeTheme.querySelector<HTMLInputElement>('input[type="radio"]');
         if(!inputCodeTheme?.checked){
             radioNormalView('span_code_theme', 'divider_code_theme');
+            changeThemeImage('theme_image', '/assets/img/image_foods_theme.svg');
         }
     });
 }
@@ -54,11 +56,13 @@ const labelFoodTheme = document.getElementById('label_food_theme');
 if(labelFoodTheme){
     labelFoodTheme.addEventListener('mouseover', () => {
         radioHoverEffect('span_food_theme', 'divider_food_theme');
+        changeThemeImage('theme_image', '/assets/img/image_foods_theme.svg');
     });
     labelFoodTheme.addEventListener('mouseout', () => {
         const inputFoodTheme = labelFoodTheme.querySelector<HTMLInputElement>('input[type="radio"]');
         if(!inputFoodTheme?.checked){
             radioNormalView('span_food_theme', 'divider_food_theme');
+            changeThemeImage('theme_image', '/assets/img/image_code_vibes_theme.svg');
         }
     });
 }
@@ -249,3 +253,8 @@ function actions36Cards(input:HTMLInputElement):void{
 document.addEventListener('DOMContentLoaded', () => {
     radioHoverEffect('span_code_theme', 'divider_code_theme');
 });
+
+function changeThemeImage(idImage:string, path:string):void{
+    let contentImgRef = document.getElementById(idImage) as HTMLImageElement;
+    if(contentImgRef){contentImgRef.src = path}
+}
