@@ -1,0 +1,7 @@
+@use './variables' as var;
+@use 'sass:map';
+
+
+.body-bg-code-theme{
+    background-color: map.get(var.$colors, intro-bg);
+}

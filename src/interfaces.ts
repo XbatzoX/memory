@@ -15,3 +15,9 @@ export interface Card{
     cardNumber: number,
     colorMatch: string
 }
+
+export interface Settings{
+    theme: string,
+    player: string,
+    boardSize: number
+}

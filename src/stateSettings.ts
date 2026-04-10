@@ -3,6 +3,7 @@ import * as data from './dataObj';
 let themeArr = ['code_vibes', 'food_theme'];
 let playerArr = ['blue', 'orange'];
 let boardSizeArr = [16, 24, 36];
+export let isValid:boolean;
 
 export function checkInputValueTheme():boolean{
     let valid = false;
@@ -73,6 +74,7 @@ export function checkInputValueBoardSize():boolean{
 }
 
 export function checkGameSettings(themeValid:boolean, playerValid:boolean, boardSizeValid:boolean):void{
+    isValid = false;
     if(themeValid && playerValid && boardSizeValid){
         let contentButtonRef = document.getElementById('start_button');
         if(contentButtonRef){
@@ -80,5 +82,6 @@ export function checkGameSettings(themeValid:boolean, playerValid:boolean, board
             contentButtonRef.classList.add('yellowBtn__enabled');
             contentButtonRef.classList.add('yellowBtn--highlight');
         }
+        isValid = true;
     }
 }

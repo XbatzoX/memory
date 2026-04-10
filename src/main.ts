@@ -3,5 +3,7 @@ import * as data from './dataObj';
 import './intro';
 import './settings';
 import './stateSettings';
+import './templates';
+import './game';
 
 // console.log(data.gameSettings.theme);
