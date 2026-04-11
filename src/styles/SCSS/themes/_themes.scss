@@ -1,0 +1,86 @@
+@use '../abstract/variables' as var;
+@use '../abstract/mixin' as mx;
+@use 'sass:map';
+
+
+.body-bg-code-theme{
+    background-color: map.get(var.$colors, intro-bg);
+}
+
+.body-bg-food-theme{
+    background-color: white;
+}
+
+.playerContainer-code_vibes{
+    @include mx.flex-center(row);
+    gap: map.get(var.$sizes, m);
+    background-color: rgba($color: map.get(var.$colors, code-bg), $alpha: 0.2);
+    font-family: 'MyDevanagari';
+    font-weight: 700;
+    font-size: map.get(var.$sizes, l);
+
+    &__box{
+        @include mx.flex-center(row);
+        gap: map.get(var.$sizes, s);
+    }
+
+    &__valueBlue{
+        padding-top: map.get(var.$sizes, s);
+        color: map.get(var.$colors, blue-player);
+    }
+
+    &__valueOrange{
+        padding-top: map.get(var.$sizes, s);
+        color: map.get(var.$colors, orange-player);
+    }
+}
+
+.playerContainer-food_theme{
+    @include mx.flex-center(row);
+    gap: map.get(var.$sizes, xl);
+    background-color: white;
+    border-radius: map.get(var.$normSizes, s);
+    font-family: 'MyUnicase';
+    font-weight: 700;
+    font-size: map.get(var.$normSizes, xl);
+
+    &__box{
+        @include mx.flex-center(row);
+        gap: map.get(var.$sizes, s);
+    }
+
+    &__valueBlue{
+        color: map.get(var.$colors, blue-player);
+    }
+
+    &__valueOrange{
+        color: map.get(var.$colors, orange-player);
+    }
+}
+
+.currentPlayer-code_vibes{
+    @include mx.flex-end(row);
+    gap: map.get(var.$sizes, s);
+
+    &__text{
+        font-family: 'MyRose';
+        font-size: map.get(var.$sizes, lPlus);
+        color: white;
+    }
+
+    &__indication{
+        padding-bottom: 4px;
+    }
+}
+
+.currentPlayer-food_theme{
+    @include mx.flex-center(row);
+    gap: map.get(var.$sizes, s);
+
+    &__text{
+        font-family: 'MyOne';
+        font-size: map.get(var.$sizes, xl);
+        color: map.get(var.$colors, currentPlayer-food);
+        font-weight: 600;
+    }
+}

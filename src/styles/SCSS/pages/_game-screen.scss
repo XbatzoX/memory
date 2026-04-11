@@ -12,52 +12,10 @@
 
     &__container-food_theme{
         display: flex;
+        align-items: center;
+        padding: 12px;
+        background-color: map.get(var.$colors, bg-header-food);
+        border-radius: 10px;
     }
 }
 
-.playerContainer-code_vibes{
-    @include mx.flex-center(row);
-    gap: map.get(var.$sizes, m);
-    background-color: rgba($color: map.get(var.$colors, code-bg), $alpha: 0.2);
-    font-family: 'MyDevanagari';
-    font-weight: 700;
-    font-size: map.get(var.$sizes, l);
-
-    &__box{
-        @include mx.flex-center(row);
-        gap: map.get(var.$sizes, s);
-    }
-
-    &__valueBlue{
-        padding-top: map.get(var.$sizes, s);
-        color: map.get(var.$colors, blue-player);
-    }
-
-    &__valueOrange{
-        padding-top: map.get(var.$sizes, s);
-        color: map.get(var.$colors, orange-player);
-    }
-}
-
-.playerContainer-food_theme{
-    @include mx.flex-center(row);
-    gap: map.get(var.$sizes, xl);
-    background-color: white;
-    border-radius: map.get(var.$normSizes, s);
-    font-family: 'MyUnicase';
-    font-weight: 700;
-    font-size: map.get(var.$normSizes, xl);
-
-    &__box{
-        @include mx.flex-center(row);
-        gap: map.get(var.$sizes, s);
-    }
-
-    &__valueBlue{
-        color: map.get(var.$colors, blue-player);
-    }
-
-    &__valueOrange{
-        color: map.get(var.$colors, orange-player);
-    }
-}

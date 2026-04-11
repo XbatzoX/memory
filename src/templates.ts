@@ -11,6 +11,10 @@ export function renderHeader(id:string):string{
                             <span id="player_orange_value" class="playerContainer-${id}__valueOrange">0</span>
                         </div>
                     </div>
+                    <div class="currentPlayer-${id}">
+                        <span class ="currentPlayer-${id}__text">Current player:</span>
+                        <img id="current_player_indication" class="currentPlayer-${id}__indication" src="../assets/icons/current_player_blue_code_theme.svg" alt="actual player indication as geo style">
+                    </div>
                 </div>
             </div>`;
 }

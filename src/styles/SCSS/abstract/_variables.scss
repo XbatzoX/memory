@@ -3,6 +3,7 @@ $sizes:(
     s: 8px,
     m: 16px,
     l: 24px,
+    lPlus:26px,
     xl: 32px,
     xxl: 48px,
     ultra: 64px
@@ -15,7 +16,9 @@ $colors:(
     btn-disabled: #d9d9d9,
     blue-player: #2BB1FF,
     orange-player: #F58E39,
-    code-bg: #86E9D6
+    code-bg: #86E9D6,
+    currentPlayer-food: #A45212,
+    bg-header-food: #F0E5D9
 );
 
 $degrees:(
