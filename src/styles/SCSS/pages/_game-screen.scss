@@ -8,10 +8,12 @@
 
     &__container-code_vibes{
         display: flex;
+        justify-content: space-between;
     }
 
     &__container-food_theme{
         display: flex;
+        justify-content: space-between;
         align-items: center;
         padding: 12px;
         background-color: map.get(var.$colors, bg-header-food);

@@ -27,6 +27,9 @@ function initGame():void{
         contentHeaderRef.innerHTML = temp.renderHeader(myGameObj.theme);   
     }
     checkPlayerImages();
+    checkCurrentPlayer();
+    checkExitButton();
+    createEventListenerExitButtonFoodTheme();
 }
 
 function checkBodyBackgroundColor():void{
@@ -74,6 +77,75 @@ function checkFoodThemePlayer():void{
         if(contentImgBlueRef){contentImgBlueRef.src = '/assets/img/icon_blue_player_food_theme.svg';}
         if(contentImgOrangeRef){contentImgOrangeRef.src = '/assets/img/icon_orange_player_food_theme.svg';}
     }
+}
+
+function checkCurrentPlayer():void{
+    checkCurrentPlayerCodeVibes();
+    checkCurrentPlayerFoodTheme();
+}
+
+function checkCurrentPlayerCodeVibes():void{
+    if(myGameObj.theme == 'code_vibes'){
+        const contentImgRef = document.getElementById('current_player_indication') as HTMLImageElement;
+        if(contentImgRef){contentImgRef.src = '/assets/icons/current_player_blue_code_theme.svg';}
+    }
+}
+
+function checkCurrentPlayerFoodTheme():void{
+    if(myGameObj.theme == 'food_theme'){
+        const contentImgRef = document.getElementById('current_player_indication') as HTMLImageElement;
+        const contentDivRef = document.getElementById('cp_indication_container') as HTMLDivElement;
+        if(contentImgRef){
+            contentImgRef.src = '/assets/icons/icon_current_player_food_theme.svg';
+        }
+        if(contentDivRef){contentDivRef.style.backgroundColor = "#2BB1FF";}
+
+    }
+}
+
+function checkExitButton():void{
+    checkExitButtonCodeVibes();
+    checkExitButtonFoodTheme();
+}
+
+function checkExitButtonCodeVibes():void{
+    if(myGameObj.theme == 'code_vibes'){
+        const contentImgRef = document.getElementById('exit_icon') as HTMLImageElement;
+        if(contentImgRef){contentImgRef.src = '/assets/icons/exit_icon_code_theme.svg';}
+    }
+}
+
+function checkExitButtonFoodTheme():void{
+    if(myGameObj.theme == 'food_theme'){
+        const contentImgRef = document.getElementById('exit_icon') as HTMLImageElement;
+        if(contentImgRef){contentImgRef.src = '/assets/icons/exit_icon_food_theme.svg';}
+    }
+}
+
+function createEventListenerExitButtonFoodTheme():void{
+    const contentButtonFoodRef = document.getElementById('exit_container');
+    if(contentButtonFoodRef && (myGameObj.theme == 'food_theme')){
+        contentButtonFoodRef.addEventListener('mouseover', () => {
+            changeExitIcon('hover');
+            changeTextColor('hover');
+        });
+        contentButtonFoodRef.addEventListener('mouseout', () => {
+            changeExitIcon('normal');
+            changeTextColor('normal');
+        })
+    }
+}
+
+function changeExitIcon(view:string):void{
+    const contentImgRef = document.getElementById('exit_icon') as HTMLImageElement;
+    if(view == 'hover'){contentImgRef.src = '/assets/icons/exit_icon_code_theme.svg';}
+    if(view == 'normal'){contentImgRef.src = '/assets/icons/exit_icon_food_theme.svg';}
+}
+
+function changeTextColor(view:string):void{
+    const contentSpanRef = document.getElementById('exit_span') as HTMLSpanElement;
+    if(view == 'hover'){contentSpanRef.style.color = "white";}
+    if(view == 'normal'){contentSpanRef.style.color = "#F58E39";}
 }
 
 if(window.location.pathname.includes('game.html')){
