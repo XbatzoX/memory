@@ -22,14 +22,22 @@ if(contentButtonRef){
 function initGame():void{
     loadDataFromLocalStorage();
     checkBodyBackgroundColor();
+    createHeader();
+    createBoard();
+}
+
+function createHeader():void{
     const contentHeaderRef = document.getElementById('game_header');
-    if(contentHeaderRef){
-        contentHeaderRef.innerHTML = temp.renderHeader(myGameObj.theme);   
-    }
+    if(contentHeaderRef){contentHeaderRef.innerHTML = temp.renderHeader(myGameObj.theme);}
     checkPlayerImages();
     checkCurrentPlayer();
     checkExitButton();
     createEventListenerExitButtonFoodTheme();
+}
+
+function createBoard():void{
+    const contentBoardRef = document.getElementById('game_board');
+    if(contentBoardRef){contentBoardRef.innerHTML = renderBoard(myGameObj.boardSize);}
 }
 
 function checkBodyBackgroundColor():void{
@@ -146,6 +154,20 @@ function changeTextColor(view:string):void{
     const contentSpanRef = document.getElementById('exit_span') as HTMLSpanElement;
     if(view == 'hover'){contentSpanRef.style.color = "white";}
     if(view == 'normal'){contentSpanRef.style.color = "#F58E39";}
+}
+
+function renderBoard(boardSize:number):string{
+    let size = boardSize;
+    let outputString = '';
+    if(size == 16){
+        for (let index = 1; index <= size; index++) {
+            if(index % 4 == 1){
+                outputString += temp.getFourCardInRowTemplate(index);
+            }
+        }
+        
+    }
+    return outputString;
 }
 
 if(window.location.pathname.includes('game.html')){
