@@ -17,9 +17,11 @@ export function renderHeader(id:string):string{
                             <img id="current_player_indication" class="currentPlayer-${id}__indication" src="../assets/icons/current_player_blue_code_theme.svg" alt="actual player indication as geo style">
                         </div>
                     </div>
-                    <div id="exit_container" class="exitContainer-${id}">
-                        <img id="exit_icon" class="exitContainer-${id}__img" src="/assets/icons/exit_icon_code_theme.svg" alt="exit game icon">
-                        <span id="exit_span" class="exitContainer-${id}__text">Exit game</span>
+                    <div class="exitFrame">
+                        <div id="exit_container" class="exitContainer-${id}">
+                            <img id="exit_icon" class="exitContainer-${id}__img" src="/assets/icons/exit_icon_code_theme.svg" alt="exit game icon">
+                            <span id="exit_span" class="exitContainer-${id}__text">Exit game</span>
+                        </div>
                     </div>
                 </div>
             </div>`;

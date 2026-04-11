@@ -21,3 +21,8 @@
     }
 }
 
+.exitFrame{
+    width: 185px;
+    @include mx.flex-end(row);
+}
+
