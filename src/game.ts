@@ -184,6 +184,10 @@ function createClickEventForCard():void{
     }
 }
 
+function getDataOfCard(i:number){
+
+}
+
 if(window.location.pathname.includes('game.html')){
     initGame();
 }
