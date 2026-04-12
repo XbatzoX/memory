@@ -8,8 +8,14 @@ export class GameCard implements Card{
     colorMatch: string;
 
     fieldObj: Field = {
-        "cardPos1" : '',
-        "cardPos2" : '',
+        "cardPos1" : {
+            "fieldPos": '',
+            "flipPermission": true
+        },
+        "cardPos2" : {
+            "fieldPos": '',
+            "flipPermission": true
+        },
         "value" : 0
     };
 

@@ -55,19 +55,25 @@ function createBoardArr():number[]{
 function getRandomFieldAndRemove(boardArr:number[]):void{
     for (let index = 0; index < cardsArr.length; index++) {
         let fieldObj:Field = {
-            "cardPos1": '',
-            "cardPos2": '',
+            "cardPos1": {
+                "fieldPos": '',
+                "flipPermission": true
+            },
+            "cardPos2": {
+                "fieldPos": '',
+                "flipPermission": true
+            },
             "value": 0
         };
         let field = Math.floor(Math.random() * boardArr.length);
         let valueArr = boardArr.splice(field, 1)[0];
-        fieldObj.cardPos1 = `${valueArr}`;
+        fieldObj.cardPos1.fieldPos = `${valueArr}`;
         fieldObj.value = cardsArr[index].cardNumber;
         setFieldOnBoard(index, valueArr, fieldObj);
 
         field = Math.floor(Math.random() * boardArr.length);
         valueArr = boardArr.splice(field, 1)[0];
-        fieldObj.cardPos2 = `${valueArr}`;
+        fieldObj.cardPos2.fieldPos = `${valueArr}`;
         fieldObj.value = cardsArr[index].cardNumber;
         setFieldOnBoard(index, valueArr, fieldObj);
     }
@@ -89,12 +95,13 @@ function initializePlayer():void{
     playerArr.push(new GamePlayer('blue'));
     playerArr.push(new GamePlayer('orange'));
     if(myGameObj.player == 'blue'){
-        playerArr[0].permission = true;
+        playerArr[0].setPermission(true);
         setCurrentPlayer('blue');
     }else{
-        playerArr[1].permission = true;
+        playerArr[1].setPermission(true);
         setCurrentPlayer('orange');
     }
+    console.log(playerArr);
 }
 
 function setCurrentPlayer(player:string):void{

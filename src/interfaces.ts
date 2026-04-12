@@ -13,7 +13,7 @@ export interface Card{
     frontImage: string,
     backImage: string,
     cardNumber: number,
-    colorMatch: string
+    colorMatch: string,
 }
 
 export interface Settings{
@@ -22,14 +22,20 @@ export interface Settings{
     boardSize: number
 }
 
+interface PositionData{
+    fieldPos: string,
+    flipPermission: boolean
+}
+
 export interface Field{
-    cardPos1: string,
-    cardPos2: string,
+    cardPos1: PositionData,
+    cardPos2: PositionData,
     value : number
 }
 
 export interface Player{
     readonly name: string,
     permission : boolean,
+    attempts: number,
     points: number
 }
