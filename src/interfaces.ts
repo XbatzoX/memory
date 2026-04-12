@@ -21,3 +21,9 @@ export interface Settings{
     player: string,
     boardSize: number
 }
+
+export interface Field{
+    cardPos1: string,
+    cardPos2: string,
+    value : number
+}
