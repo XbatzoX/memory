@@ -38,6 +38,7 @@ function createHeader():void{
 function createBoard():void{
     const contentBoardRef = document.getElementById('game_board');
     if(contentBoardRef){contentBoardRef.innerHTML = renderBoard(myGameObj.boardSize);}
+    createClickEventForCard();
 }
 
 function checkBodyBackgroundColor():void{
@@ -168,6 +169,16 @@ function renderBoard(boardSize:number):string{
         
     }
     return outputString;
+}
+
+function createClickEventForCard():void{
+    const contentCardRef = document.getElementById('card_1');
+    if(contentCardRef){
+        contentCardRef.addEventListener('click', e => {
+            const card = (e.target as HTMLElement).closest('.card') as HTMLDivElement;
+            if(card){card.classList.toggle('is-flipped');}
+        });
+    }
 }
 
 if(window.location.pathname.includes('game.html')){

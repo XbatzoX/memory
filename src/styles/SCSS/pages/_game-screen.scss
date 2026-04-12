@@ -26,3 +26,13 @@
     @include mx.flex-end(row);
 }
 
+.gameBoard{
+    @include mx.flex-center();
+    gap: map.get(var.$sizes, ss);
+    padding-top: map.get(var.$sizes, xxl);
+}
+
+.cardRow{
+    @include mx.flex-center(row);
+    gap: map.get(var.$sizes, ss);
+}

@@ -30,20 +30,28 @@ export function renderHeader(id:string):string{
 export function getFourCardInRowTemplate(i:number):string{
     return `<div class="cardRow">
                 <div id="card_${i}" class="card">
-                    <img id="cardFace_${i}" class="card__face" src="/assets/icons/code_theme/python_code_theme.svg" alt="card with game icon">
-                    <img id="cardBack_${i}" class="card__face--back" src="/assets/icons/code_theme/card_bg_code_theme.svg" alt="card background image">
+                    <div class="card__inner">
+                        <img id="cardFace_${i}" class="card__face card__face--front" src="/assets/icons/code_theme/python_code_theme.svg" alt="card with game icon">
+                        <img id="cardBack_${i}" class="card__face card__face--back" src="/assets/icons/code_theme/card_bg_code_theme.svg" alt="card background image">
+                    </div>
                 </div>
                 <div id="card_${i + 1}" class="card">
-                    <img id="cardFace_${i + 1}" class="card__face" src="/assets/icons/code_theme/python_code_theme.svg" alt="card with game icon">
-                    <img id="cardBack_${i + 1}" class="card__face--back" src="/assets/icons/code_theme/card_bg_code_theme.svg" alt="card background image">
+                    <div class="card__inner">
+                        <img id="cardFace_${i + 1}" class="card__face" src="/assets/icons/code_theme/python_code_theme.svg" alt="card with game icon">
+                        <img id="cardBack_${i + 1}" class="card__face--back" src="/assets/icons/code_theme/card_bg_code_theme.svg" alt="card background image">
+                    </div>
                 </div>
                 <div id="card_${i + 2}" class="card">
-                    <img id="cardFace_${i + 2}" class="card__face" src="/assets/icons/code_theme/python_code_theme.svg" alt="card with game icon">
-                    <img id="cardBack_${i + 2}" class="card__face--back" src="/assets/icons/code_theme/card_bg_code_theme.svg" alt="card background image">
+                    <div class="card__inner">
+                        <img id="cardFace_${i + 2}" class="card__face" src="/assets/icons/code_theme/python_code_theme.svg" alt="card with game icon">
+                        <img id="cardBack_${i + 2}" class="card__face--back" src="/assets/icons/code_theme/card_bg_code_theme.svg" alt="card background image">
+                    </div>
                 </div>
                 <div id="card_${i + 3}" class="card">
-                    <img id="cardFace_${i + 3}" class="card__face" src="/assets/icons/code_theme/python_code_theme.svg" alt="card with game icon">
-                    <img id="cardBack_${i + 3}" class="card__face--back" src="/assets/icons/code_theme/card_bg_code_theme.svg" alt="card background image">
+                    <div class="card__inner">
+                        <img id="cardFace_${i + 3}" class="card__face" src="/assets/icons/code_theme/python_code_theme.svg" alt="card with game icon">
+                        <img id="cardBack_${i + 3}" class="card__face--back" src="/assets/icons/code_theme/card_bg_code_theme.svg" alt="card background image">
+                    </div>
                 </div>
             </div>`;
 }
