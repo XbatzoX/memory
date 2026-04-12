@@ -2,8 +2,9 @@ import * as data from './dataObj';
 import * as temp from './templates';
 import {isValid} from './stateSettings';
 import {Settings} from './interfaces';
+import * as logic from './gameLogic';
 
-let myGameObj:Settings;
+export let myGameObj:Settings;
 
 function createGame():void{
    if(isValid){
@@ -39,6 +40,7 @@ function createBoard():void{
     const contentBoardRef = document.getElementById('game_board');
     if(contentBoardRef){contentBoardRef.innerHTML = renderBoard(myGameObj.boardSize);}
     createClickEventForCard();
+    logic.createLogicData();
 }
 
 function checkBodyBackgroundColor():void{
@@ -172,12 +174,14 @@ function renderBoard(boardSize:number):string{
 }
 
 function createClickEventForCard():void{
-    const contentCardRef = document.getElementById('card_1');
-    if(contentCardRef){
-        contentCardRef.addEventListener('click', e => {
-            const card = (e.target as HTMLElement).closest('.card') as HTMLDivElement;
-            if(card){card.classList.toggle('is-flipped');}
-        });
+    for (let index = 1; index <= myGameObj.boardSize; index++) {
+        const contentCardRef = document.getElementById('card_' + index);
+        if(contentCardRef){
+            contentCardRef.addEventListener('click', e => {
+                const card = (e.target as HTMLElement).closest('.card') as HTMLDivElement;
+                if(card){card.classList.toggle('is-flipped');}
+            });
+        }   
     }
 }
 
