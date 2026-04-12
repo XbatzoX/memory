@@ -168,7 +168,6 @@ function renderBoard(boardSize:number):string{
                 outputString += temp.getFourCardInRowTemplate(index);
             }
         }
-        
     }
     return outputString;
 }

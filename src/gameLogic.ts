@@ -1,6 +1,7 @@
-import {myGameObj} from './game';
+import { myGameObj } from './game';
 import * as data from './dataObj';
 import { GameCard } from './card.class';
+import { GamePlayer } from './player.class';
 import { Field } from './interfaces';
 
 let imagesCodeVibes = data.codeVibesImageArr;
@@ -8,6 +9,7 @@ let backSideCodeVibes = '/assets/icons/code_theme/card_bg_code_theme.svg';
 let imagesFoodTheme = data.foodThemeImageArr;
 let backSideFoodTheme = '/assets/icons/food_theme/bg_food_theme.svg';
 let cardsArr:GameCard[];
+let playerArr:GamePlayer[];
 
 
 export function createLogicData():void{
@@ -15,6 +17,7 @@ export function createLogicData():void{
     createCodeVibesData(amountImages);
     createFoodThemeData(amountImages);
     fieldAssignment();
+    initializePlayer();
     console.log(cardsArr);
 }
 
@@ -80,4 +83,29 @@ function setFieldOnBoard(cardNumber:number, fieldValue:number, fielObj:Field):vo
         cardsArr[cardNumber].setCardNumberToFieldObj(fielObj);
     }
 }
- 
+
+function initializePlayer():void{
+    playerArr = [];
+    playerArr.push(new GamePlayer('blue'));
+    playerArr.push(new GamePlayer('orange'));
+    if(myGameObj.player == 'blue'){
+        playerArr[0].permission = true;
+        setCurrentPlayer('blue');
+    }else{
+        playerArr[1].permission = true;
+        setCurrentPlayer('orange');
+    }
+}
+
+function setCurrentPlayer(player:string):void{
+    let contentImgRef = document.getElementById('current_player_indication') as HTMLImageElement;
+    let contentDivRef = document.getElementById('cp_indication_container') as HTMLDivElement;
+    if(player == 'blue'){
+        if(myGameObj.theme == 'code_vibes' && contentImgRef){contentImgRef.src = '/assets/icons/current_player_blue_code_theme.svg';}
+        if(myGameObj.theme == 'food_theme' && contentDivRef){contentDivRef.style.backgroundColor = "#2BB1FF";}
+    }
+    if(player == 'orange'){
+        if(myGameObj.theme == 'code_vibes' && contentImgRef){contentImgRef.src = '/assets/icons/current_player_orange_code_theme.svg';}
+        if(myGameObj.theme == 'food_theme' && contentDivRef){contentDivRef.style.backgroundColor = "#F58E39";}
+    }
+}

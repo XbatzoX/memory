@@ -27,3 +27,9 @@ export interface Field{
     cardPos2: string,
     value : number
 }
+
+export interface Player{
+    readonly name: string,
+    permission : boolean,
+    points: number
+}
