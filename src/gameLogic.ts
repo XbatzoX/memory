@@ -4,6 +4,8 @@ import { GameCard } from './card.class';
 
 let imagesCodeVibes = data.codeVibesImageArr;
 let backSideCodeVibes = '/assets/icons/code_theme/card_bg_code_theme.svg';
+let imagesFoodTheme = data.foodThemeImageArr;
+let backSideFoodTheme = '/assets/icons/food_theme/bg_food_theme.svg';
 let cardsArr:GameCard[];
 
 export function createLogicData():void{
