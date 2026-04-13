@@ -124,6 +124,7 @@ export function setDataAfterFlip(i:number){
     for (let index = 0; index < playerArr.length; index++) {
         if(playerArr[index].name == currentPlayer){
             removeFlipPermissionFromCard(i);
+            putValueOfCardToPlayerStorage(playerArr[index].attempts, i);
             playerArr[index].attempts -= 1;
             if(playerArr[index].attempts <= 0){
                 changePlayer();
@@ -145,8 +146,50 @@ function removeFlipPermissionFromCard(i:number):void{
     }
 }
 
-function putValueOfCardToPlayerStorage(attempts:number):void{
+function putValueOfCardToPlayerStorage(attempts:number, i:number):void{
+    let card = '';
+    let cardNumber = 0;
+    if(attempts == 2){
+        for (let index = 0; index < cardsArr.length; index++) {
+            card = cardsArr[index].fieldObj.cardPos1.fieldPos;
+            if(card == `${i}`){
+                cardNumber = cardsArr[index].cardNumber;
+                for (let index = 0; index < playerArr.length; index++) {
+                    if(playerArr[index].name == currentPlayer){playerArr[index].setCardValue1(cardNumber);}
+                }
+                break;
+            }
+            card = cardsArr[index].fieldObj.cardPos2.fieldPos;
+            if(card == `${i}`){
+                cardNumber = cardsArr[index].cardNumber;
+                for (let index = 0; index < playerArr.length; index++) {
+                    if(playerArr[index].name == currentPlayer){playerArr[index].setCardValue1(cardNumber);}
+                }
+                break;
+            }
+        }
+    }
 
+    if(attempts == 1){
+        for (let index = 0; index < cardsArr.length; index++) {
+            card = cardsArr[index].fieldObj.cardPos1.fieldPos;
+            if(card == `${i}`){
+                cardNumber = cardsArr[index].cardNumber;
+                for (let index = 0; index < playerArr.length; index++) {
+                    if(playerArr[index].name == currentPlayer){playerArr[index].setCardValue2(cardNumber);}
+                }
+                break;
+            }
+            card = cardsArr[index].fieldObj.cardPos2.fieldPos;
+            if(card == `${i}`){
+                cardNumber = cardsArr[index].cardNumber;
+                for (let index = 0; index < playerArr.length; index++) {
+                    if(playerArr[index].name == currentPlayer){playerArr[index].setCardValue2(cardNumber);}
+                }
+                break;
+            }
+        }
+    }
 }
 
 function changePlayer():void{

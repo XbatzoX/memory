@@ -33,4 +33,12 @@ export class GamePlayer implements Player{
     setAttempts(amount:number):void{
         this.attempts = amount;
     }
+
+    setCardValue1(value:number){
+        this.cardValues.card1 = value;
+    }
+
+    setCardValue2(value:number){
+        this.cardValues.card2 = value;
+    }
 }
