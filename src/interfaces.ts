@@ -39,3 +39,8 @@ export interface Player{
     attempts: number,
     points: number
 }
+
+export interface CardValues{
+    card1: number,
+    card2: number
+}

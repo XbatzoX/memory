@@ -8,8 +8,9 @@ let imagesCodeVibes = data.codeVibesImageArr;
 let backSideCodeVibes = '/assets/icons/code_theme/card_bg_code_theme.svg';
 let imagesFoodTheme = data.foodThemeImageArr;
 let backSideFoodTheme = '/assets/icons/food_theme/bg_food_theme.svg';
-let cardsArr:GameCard[];
-let playerArr:GamePlayer[];
+export let cardsArr:GameCard[];
+export let playerArr:GamePlayer[];
+let currentPlayer:string = '';
 
 
 export function createLogicData():void{
@@ -110,9 +111,85 @@ function setCurrentPlayer(player:string):void{
     if(player == 'blue'){
         if(myGameObj.theme == 'code_vibes' && contentImgRef){contentImgRef.src = '/assets/icons/current_player_blue_code_theme.svg';}
         if(myGameObj.theme == 'food_theme' && contentDivRef){contentDivRef.style.backgroundColor = "#2BB1FF";}
+        currentPlayer = 'blue';
     }
     if(player == 'orange'){
         if(myGameObj.theme == 'code_vibes' && contentImgRef){contentImgRef.src = '/assets/icons/current_player_orange_code_theme.svg';}
         if(myGameObj.theme == 'food_theme' && contentDivRef){contentDivRef.style.backgroundColor = "#F58E39";}
+        currentPlayer = 'orange';
+    }
+}
+
+export function setDataAfterFlip(i:number){
+    for (let index = 0; index < playerArr.length; index++) {
+        if(playerArr[index].name == currentPlayer){
+            removeFlipPermissionFromCard(i);
+            playerArr[index].attempts -= 1;
+            if(playerArr[index].attempts <= 0){
+                changePlayer();
+                setCurrentPlayer(currentPlayer);
+            }
+            break;
+        }
+    }
+}
+
+function removeFlipPermissionFromCard(i:number):void{
+    let card = '';
+    for (let index = 0; index < cardsArr.length; index++) {
+        card = cardsArr[index].fieldObj.cardPos1.fieldPos;
+        if(card == `${i}`){cardsArr[index].fieldObj.cardPos1.flipPermission = false;}
+
+        card = cardsArr[index].fieldObj.cardPos2.fieldPos;
+        if(card == `${i}`){cardsArr[index].fieldObj.cardPos2.flipPermission = false;}
+    }
+}
+
+function putValueOfCardToPlayerStorage(attempts:number):void{
+
+}
+
+function changePlayer():void{
+    let changed = false;
+    if(currentPlayer == 'blue' && !changed){
+        for (let index = 0; index < playerArr.length; index++) {
+            if(playerArr[index].name == currentPlayer){
+                playerArr[index].permission = false;
+                playerArr[index].cardValues.card1 = 0;
+                playerArr[index].cardValues.card2 = 0;
+                currentPlayer = 'orange';
+            }
+            if(currentPlayer == 'orange'){
+                for (let index = 0; index < playerArr.length; index++) {
+                    if(playerArr[index].name == currentPlayer){
+                        playerArr[index].attempts = 2;
+                        playerArr[index].permission = true;
+                    }
+                }
+                changed = true;
+                break;
+            }
+        }
+    }
+
+    if(currentPlayer == 'orange' && !changed){
+        for (let index = 0; index < playerArr.length; index++) {
+            if(playerArr[index].name == currentPlayer){
+                playerArr[index].permission = false;
+                playerArr[index].cardValues.card1 = 0;
+                playerArr[index].cardValues.card2 = 0;
+                currentPlayer = 'blue';
+            }
+            if(currentPlayer == 'blue'){
+                for (let index = 0; index < playerArr.length; index++) {
+                    if(playerArr[index].name == currentPlayer){
+                        playerArr[index].attempts = 2;
+                        playerArr[index].permission = true;
+                    }
+                }
+                changed = true;
+                break;
+            }
+        }
     }
 }

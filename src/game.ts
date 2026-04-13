@@ -177,15 +177,38 @@ function createClickEventForCard():void{
         const contentCardRef = document.getElementById('card_' + index);
         if(contentCardRef){
             contentCardRef.addEventListener('click', e => {
-                const card = (e.target as HTMLElement).closest('.card') as HTMLDivElement;
-                if(card){card.classList.toggle('is-flipped');}
+                if(getDataOfCard(index)){
+                    const card = (e.target as HTMLElement).closest('.card') as HTMLDivElement;
+                    if(card){card.classList.toggle('is-flipped');}
+                    logic.setDataAfterFlip(index);
+                    console.log(logic.playerArr);
+                }
             });
         }   
     }
 }
 
-function getDataOfCard(i:number){
+function getDataOfCard(i:number):boolean{
+    let match = false;
+    let amountCards = myGameObj.boardSize / 2;
+    let card:string;
+    let permissionToFlip:boolean;
+    for (let index = 0; index < amountCards; index++) {
+        card = logic.cardsArr[index].fieldObj.cardPos1.fieldPos;
+        permissionToFlip = logic.cardsArr[index].fieldObj.cardPos1.flipPermission;
+        if(card == `${i}` && permissionToFlip){
+            match = true;
+            break;
+        }
 
+        card = logic.cardsArr[index].fieldObj.cardPos2.fieldPos;
+        permissionToFlip = logic.cardsArr[index].fieldObj.cardPos2.flipPermission;
+        if(card == `${i}` && permissionToFlip){
+            match = true;
+            break;
+        }
+    }
+    return match;
 }
 
 if(window.location.pathname.includes('game.html')){
