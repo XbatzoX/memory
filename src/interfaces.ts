@@ -49,3 +49,9 @@ export interface Pickedcards{
     cardPos1: number,
     cardPos2: number
 }
+
+export interface GameResult{
+    winner : string,
+    pointsBluePlayer : number,
+    pointsOrangePlayer : number
+}

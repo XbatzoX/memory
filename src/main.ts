@@ -5,5 +5,6 @@ import './settings';
 import './stateSettings';
 import './templates';
 import './game';
+import './gameOver';
 
 // console.log(data.gameSettings.theme);

@@ -49,3 +49,13 @@ export let foodThemeImageArr:string[] = [
     '/assets/icons/food_theme/taco_food_theme.svg',
     '/assets/icons/food_theme/wrap_food_theme.svg'
 ];
+
+export let gameResult:{
+    winner : string,
+    pointsBluePlayer : number,
+    pointsOrangePlayer : number
+} = {
+    winner : '',
+    pointsBluePlayer : 0,
+    pointsOrangePlayer : 0
+};

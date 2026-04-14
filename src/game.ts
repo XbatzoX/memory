@@ -185,6 +185,7 @@ function createClickEventForCard():void{
                     if(match){
                         matchDesign();
                         actualizePointIndication();
+                        findWinner();
                     }
                     console.log(logic.playerArr);
                 }
@@ -216,7 +217,7 @@ function getDataOfCard(i:number):boolean{
     return match;
 }
 
-function actualizePointIndication(){
+function actualizePointIndication():void{
     let player:string;
     let blueIndication = document.getElementById('player_blue_value');
     let orangeIndication = document.getElementById('player_orange_value');
@@ -227,7 +228,7 @@ function actualizePointIndication(){
     }
 }
 
-function matchDesign(){
+function matchDesign():void{
     for (let index = 0; index < logic.playerArr.length; index++) {
        if(logic.playerArr[index].name == logic.currentPlayer){
         let card1 = logic.playerArr[index].pickedCards.cardPos1;
@@ -243,6 +244,27 @@ function matchDesign(){
             if(myGameObj.theme == 'food_theme'){cardOnBoard2.style.border = '4px solid #F3832D';}
         }
        } 
+    }
+}
+
+function findWinner():void{
+    let maxPoints = myGameObj.boardSize / 2;
+    let actualPoints = 0;
+    for (let index = 0; index < logic.playerArr.length; index++) {
+        if(logic.playerArr[index].name == 'blue'){data.gameResult.pointsBluePlayer = logic.playerArr[index].points;}
+        if(logic.playerArr[index].name == 'orange'){data.gameResult.pointsOrangePlayer = logic.playerArr[index].points;}
+        actualPoints += logic.playerArr[index].points;
+    }
+    if(actualPoints >= maxPoints){
+        if(data.gameResult.pointsBluePlayer > data.gameResult.pointsOrangePlayer){
+            data.gameResult.winner = 'blue';
+        }else if(data.gameResult.pointsBluePlayer < data.gameResult.pointsOrangePlayer){
+            data.gameResult.winner = 'orange';
+        }else{
+            data.gameResult.winner = 'draw';
+        }
+        localStorage.setItem('myGameResult', JSON.stringify(data.gameResult));
+        window.location.href = 'gameOver.html';
     }
 }
 
