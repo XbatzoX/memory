@@ -173,6 +173,7 @@ function renderBoard(boardSize:number):string{
 }
 
 function createClickEventForCard():void{
+    let match = false;
     for (let index = 1; index <= myGameObj.boardSize; index++) {
         const contentCardRef = document.getElementById('card_' + index);
         if(contentCardRef){
@@ -180,7 +181,11 @@ function createClickEventForCard():void{
                 if(getDataOfCard(index)){
                     const card = (e.target as HTMLElement).closest('.card') as HTMLDivElement;
                     if(card){card.classList.toggle('is-flipped');}
-                    logic.setDataAfterFlip(index);
+                    match = logic.setDataAfterFlip(index);
+                    if(match){
+                        matchDesign();
+                        actualizePointIndication();
+                    }
                     console.log(logic.playerArr);
                 }
             });
@@ -209,6 +214,36 @@ function getDataOfCard(i:number):boolean{
         }
     }
     return match;
+}
+
+function actualizePointIndication(){
+    let player:string;
+    let blueIndication = document.getElementById('player_blue_value');
+    let orangeIndication = document.getElementById('player_orange_value');
+    for (let index = 0; index < logic.playerArr.length; index++) {
+       player = logic.playerArr[index].name;
+       if(player == 'blue' && blueIndication){blueIndication.innerHTML = `${logic.playerArr[index].points}`;} 
+       if(player == 'orange' && orangeIndication){orangeIndication.innerHTML = `${logic.playerArr[index].points}`;}
+    }
+}
+
+function matchDesign(){
+    for (let index = 0; index < logic.playerArr.length; index++) {
+       if(logic.playerArr[index].name == logic.currentPlayer){
+        let card1 = logic.playerArr[index].pickedCards.cardPos1;
+        let card2 = logic.playerArr[index].pickedCards.cardPos2;
+        let cardOnBoard1 = document.getElementById('card_' + card1);
+        let cardOnBoard2 = document.getElementById('card_' + card2);
+        if(cardOnBoard1){
+            if(myGameObj.theme == 'code_vibes'){cardOnBoard1.style.border = "4px solid #4DD5BC";}
+            if(myGameObj.theme == 'food_theme'){cardOnBoard1.style.border = '4px solid #F3832D';}
+        }
+        if(cardOnBoard2){
+            if(myGameObj.theme == 'code_vibes'){cardOnBoard2.style.border = "4px solid #4DD5BC";}
+            if(myGameObj.theme == 'food_theme'){cardOnBoard2.style.border = '4px solid #F3832D';}
+        }
+       } 
+    }
 }
 
 if(window.location.pathname.includes('game.html')){

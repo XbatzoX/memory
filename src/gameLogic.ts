@@ -10,7 +10,7 @@ let imagesFoodTheme = data.foodThemeImageArr;
 let backSideFoodTheme = '/assets/icons/food_theme/bg_food_theme.svg';
 export let cardsArr:GameCard[];
 export let playerArr:GamePlayer[];
-let currentPlayer:string = '';
+export let currentPlayer:string = '';
 
 
 export function createLogicData():void{
@@ -120,19 +120,39 @@ function setCurrentPlayer(player:string):void{
     }
 }
 
-export function setDataAfterFlip(i:number){
+export function setDataAfterFlip(i:number):boolean{
+    let match = false;
     for (let index = 0; index < playerArr.length; index++) {
         if(playerArr[index].name == currentPlayer){
             removeFlipPermissionFromCard(i);
             putValueOfCardToPlayerStorage(playerArr[index].attempts, i);
             playerArr[index].attempts -= 1;
             if(playerArr[index].attempts <= 0){
-                changePlayer();
-                setCurrentPlayer(currentPlayer);
+                match = checkMatch();
+                if(!match){setCurrentPlayer(currentPlayer);}
             }
             break;
         }
     }
+    return match;
+}
+
+function checkMatch():boolean{
+    let match = false;
+    for (let index = 0; index < playerArr.length; index++) {
+        if(playerArr[index].name == currentPlayer){
+            if(playerArr[index].cardValues.card1 == playerArr[index].cardValues.card2){
+                playerArr[index].increasePoints();
+                playerArr[index].setAttempts(2);
+                match = true;
+            }else{
+                flipBackWithoutMatch();
+                changePlayer();
+            }
+            break;
+        }
+    }
+    return match;
 }
 
 function removeFlipPermissionFromCard(i:number):void{
@@ -155,7 +175,10 @@ function putValueOfCardToPlayerStorage(attempts:number, i:number):void{
             if(card == `${i}`){
                 cardNumber = cardsArr[index].cardNumber;
                 for (let index = 0; index < playerArr.length; index++) {
-                    if(playerArr[index].name == currentPlayer){playerArr[index].setCardValue1(cardNumber);}
+                    if(playerArr[index].name == currentPlayer){
+                        playerArr[index].setCardValue1(cardNumber);
+                        playerArr[index].setCardPos(1, i);
+                    }
                 }
                 break;
             }
@@ -163,7 +186,10 @@ function putValueOfCardToPlayerStorage(attempts:number, i:number):void{
             if(card == `${i}`){
                 cardNumber = cardsArr[index].cardNumber;
                 for (let index = 0; index < playerArr.length; index++) {
-                    if(playerArr[index].name == currentPlayer){playerArr[index].setCardValue1(cardNumber);}
+                    if(playerArr[index].name == currentPlayer){
+                        playerArr[index].setCardValue1(cardNumber);
+                        playerArr[index].setCardPos(1, i);
+                    }
                 }
                 break;
             }
@@ -176,7 +202,10 @@ function putValueOfCardToPlayerStorage(attempts:number, i:number):void{
             if(card == `${i}`){
                 cardNumber = cardsArr[index].cardNumber;
                 for (let index = 0; index < playerArr.length; index++) {
-                    if(playerArr[index].name == currentPlayer){playerArr[index].setCardValue2(cardNumber);}
+                    if(playerArr[index].name == currentPlayer){
+                        playerArr[index].setCardValue2(cardNumber);
+                        playerArr[index].setCardPos(2, i);
+                    }
                 }
                 break;
             }
@@ -184,7 +213,10 @@ function putValueOfCardToPlayerStorage(attempts:number, i:number):void{
             if(card == `${i}`){
                 cardNumber = cardsArr[index].cardNumber;
                 for (let index = 0; index < playerArr.length; index++) {
-                    if(playerArr[index].name == currentPlayer){playerArr[index].setCardValue2(cardNumber);}
+                    if(playerArr[index].name == currentPlayer){
+                        playerArr[index].setCardValue2(cardNumber);
+                        playerArr[index].setCardPos(2, i);
+                    }
                 }
                 break;
             }
@@ -234,5 +266,39 @@ function changePlayer():void{
                 break;
             }
         }
+    }
+}
+
+function flipBackWithoutMatch():void{
+   let player:string;
+    for (let index = 0; index < playerArr.length; index++) {
+        player = playerArr[index].name;
+        if(player == currentPlayer){
+            setTimeout(() => {
+                let card1 = playerArr[index].pickedCards.cardPos1;
+                let card2 = playerArr[index].pickedCards.cardPos2;
+                let cardOnBoard = document.getElementById('card_' + card1);
+                if(cardOnBoard){
+                    cardOnBoard.classList.toggle('is-flipped');
+                    setFlipPermissionFromCard(card1);
+                }
+                cardOnBoard = document.getElementById('card_' + card2);
+                if(cardOnBoard){
+                    cardOnBoard.classList.toggle('is-flipped');
+                    setFlipPermissionFromCard(card2);
+                }
+            }, 1000);
+        }
+    }
+}
+
+function setFlipPermissionFromCard(i:number):void{
+    let card = '';
+    for (let index = 0; index < cardsArr.length; index++) {
+        card = cardsArr[index].fieldObj.cardPos1.fieldPos;
+        if(card == `${i}`){cardsArr[index].fieldObj.cardPos1.flipPermission = true;}
+
+        card = cardsArr[index].fieldObj.cardPos2.fieldPos;
+        if(card == `${i}`){cardsArr[index].fieldObj.cardPos2.flipPermission = true;}
     }
 }

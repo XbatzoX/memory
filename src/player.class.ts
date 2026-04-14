@@ -1,5 +1,6 @@
 import { Player } from "./interfaces";
 import { CardValues } from "./interfaces";
+import { Pickedcards } from "./interfaces";
 
 export class GamePlayer implements Player{
     name: string;
@@ -7,6 +8,7 @@ export class GamePlayer implements Player{
     attempts: number;
     points: number;
     cardValues: CardValues;
+    pickedCards: Pickedcards;
     
 
     constructor(name:string){
@@ -18,6 +20,10 @@ export class GamePlayer implements Player{
             "card1" : 0,
             "card2" : 0
         };
+        this.pickedCards = {
+            "cardPos1" : 0,
+            "cardPos2" : 0
+        }
     }
 
     setPermission(state:boolean):void{
@@ -34,11 +40,20 @@ export class GamePlayer implements Player{
         this.attempts = amount;
     }
 
-    setCardValue1(value:number){
+    setCardValue1(value:number):void{
         this.cardValues.card1 = value;
     }
 
-    setCardValue2(value:number){
+    setCardValue2(value:number):void{
         this.cardValues.card2 = value;
+    }
+
+    increasePoints():void{
+        this.points += 1;
+    }
+
+    setCardPos(card:1 | 2, position:number){
+        if(card == 1){this.pickedCards.cardPos1 = position;}
+        if(card == 2){this.pickedCards.cardPos2 = position;}
     }
 }

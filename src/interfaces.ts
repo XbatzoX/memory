@@ -44,3 +44,8 @@ export interface CardValues{
     card1: number,
     card2: number
 }
+
+export interface Pickedcards{
+    cardPos1: number,
+    cardPos2: number
+}

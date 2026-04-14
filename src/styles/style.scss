@@ -10,8 +10,11 @@
 @use './SCSS/components/cards';
 @use './SCSS/themes/themes';
 
-body{
+*{
     box-sizing: border-box;
+}
+
+body{
     margin: 0;
 }
 
