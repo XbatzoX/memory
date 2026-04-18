@@ -34,3 +34,12 @@
   @include mx.flex-center();
   gap: map.get(var.$sizes, m);
 }
+
+.winnerSection{
+  min-height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: map.get(var.$sizes, m);
+  display: flex;
+  justify-content: center;
+}

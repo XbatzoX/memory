@@ -75,18 +75,44 @@ function checkFoodThemeGameOver():void{
     }
 }
 
-function setFinalPoints(){
+function setFinalPoints():void{
     const contentSpanBlueRef = document.getElementById('over_blue_value');
     const contentSpanOrangeRef = document.getElementById('over_orange_value');
     if(contentSpanBlueRef){contentSpanBlueRef.innerText = String(resultObj.pointsBluePlayer);}
     if(contentSpanOrangeRef){contentSpanOrangeRef.innerText = String(resultObj.pointsOrangePlayer);}
 }
 
-function renderWinnerContainer(){
+function renderWinnerContainer():void{
     setTimeout(() => {
         const contentSectionRef = document.getElementById('game_over');
+        const contentWinnerSectionRef = document.getElementById('winner_section');
         if(contentSectionRef){contentSectionRef.classList.add('invisible');}
+        if(contentWinnerSectionRef){
+            if(mySettings.theme == 'food_theme'){document.getElementById('body_game_over')!.style.backgroundColor = "white";}
+            contentWinnerSectionRef.innerHTML = temp.getWinnerTemplate(mySettings.theme);
+            checkWinnerIndication(resultObj.winner, mySettings.theme);
+        }
     }, 2500);
+}
+
+function checkWinnerIndication(winner:string, theme:string):void{
+    const contentSpanRef = document.getElementById('winner_indication');
+    if(contentSpanRef && theme == 'code_vibes'){
+        winnerIndicationCodeVibes(contentSpanRef, winner);
+    }
+}
+
+function winnerIndicationCodeVibes(contentSpanRef:HTMLElement, winner:string):void{
+    if(winner == 'blue'){
+        contentSpanRef.style.color = "#2BB1FF";
+        contentSpanRef.innerText = 'Blue Player';
+    }
+    if(winner == 'orange'){
+        contentSpanRef.style.color = "#F58E39";
+        contentSpanRef.innerText = 'Orange Player';
+    }
+    let text = contentSpanRef.textContent;
+    contentSpanRef.textContent = text.toUpperCase();
 }
 
 if(window.location.pathname.includes('gameOver.html')){

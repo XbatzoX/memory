@@ -173,3 +173,56 @@
     font-size: 26px;
     color: white;
 }
+
+.winnerContainer-code_vibes{
+    height: 100%;
+    // @include mx.flex-center();
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: map.get(var.$sizes, m);
+
+    &__winnerCaption{
+        font-family: 'MyRose';
+        font-size: map.get(var.$normSizes, xxl);
+        color: white;
+    }
+
+    &__winnerIndication{
+        font-family: 'MyRose';
+        font-weight: 700;
+        font-size: map.get(var.$normSizes, xxlPlus);
+    }
+
+    &__playerIcon{
+        padding: map.get(var.$sizes, xxl);
+    }
+}
+
+.winnerContainer-food_theme{
+    height: 100%;
+    @include mx.flex-center();
+    gap: map.get(var.$sizes, m);
+
+    &__image{
+        display: none;
+    }
+
+    &__winnerCaption{
+        font-family: 'MyOne';
+        font-size: map.get(var.$normSizes, xxl);
+        color: map.get(var.$colors, currentPlayer-food);
+    }
+
+    &__winnerIndication{
+        font-family: 'MyOne';
+        font-weight: 600;
+        font-size: 80px;
+        color: map.get(var.$colors, currentPlayer-food);
+    }
+
+    &__playerIcon{
+        padding: map.get(var.$sizes, xxl);
+    }
+}
