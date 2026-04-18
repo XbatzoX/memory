@@ -8,6 +8,7 @@
     margin: 0;
     min-inline-size: 0;
     width: 100%;
+    min-width: 283px;
     font-family: 'MyAlmarai';
     color: map.get(var.$colors, intro-bg);
     @include mx.flex-start();
