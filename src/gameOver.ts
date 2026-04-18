@@ -34,11 +34,50 @@ function createThemeBackground():void{
     }
 }
 
-function renderGameOverContainer(theme:string){
+function renderGameOverContainer(theme:string):void{
     const contentSectionRef = document.getElementById('game_over');
-    if(contentSectionRef){
-        contentSectionRef.innerHTML = temp.getGameOverTemplate(theme);
+    if(contentSectionRef){contentSectionRef.innerHTML = temp.getGameOverTemplate(theme);}
+    checkCaptionTheme(theme);
+    checkGameOverImages();
+    setFinalPoints();
+}
+
+function checkCaptionTheme(theme:string):void{
+    const contentCaptionRef = document.getElementById('game_over_text');
+    if(contentCaptionRef && theme == 'food_theme'){
+        let spanContent = contentCaptionRef.textContent;
+        if(spanContent){contentCaptionRef.textContent = spanContent.toUpperCase();}
     }
+}
+
+function checkGameOverImages():void{
+    checkCodeThemeGameOver();
+    checkFoodThemeGameOver();
+}
+
+function checkCodeThemeGameOver():void{
+    if(mySettings.theme == 'code_vibes'){
+        const contentImgBlueRef = document.getElementById('over_blue_player') as HTMLImageElement;
+        const contentImgOrangeRef = document.getElementById('over_orange_player') as HTMLImageElement;
+        if(contentImgBlueRef){contentImgBlueRef.src = '/assets/img/player_blue_code_theme.svg';}
+        if(contentImgOrangeRef){contentImgOrangeRef.src = '/assets/img/player_orange_code_theme.svg';}
+    }
+}
+
+function checkFoodThemeGameOver():void{
+    if(mySettings.theme == 'food_theme'){
+        const contentImgBlueRef = document.getElementById('over_blue_player') as HTMLImageElement;
+        const contentImgOrangeRef = document.getElementById('over_orange_player') as HTMLImageElement;
+        if(contentImgBlueRef){contentImgBlueRef.src = '/assets/img/icon_blue_player_food_theme.svg';}
+        if(contentImgOrangeRef){contentImgOrangeRef.src = '/assets/img/icon_orange_player_food_theme.svg';}
+    }
+}
+
+function setFinalPoints(){
+    const contentSpanBlueRef = document.getElementById('over_blue_value');
+    const contentSpanOrangeRef = document.getElementById('over_orange_value');
+    if(contentSpanBlueRef){contentSpanBlueRef.innerText = String(resultObj.pointsBluePlayer);}
+    if(contentSpanOrangeRef){contentSpanOrangeRef.innerText = String(resultObj.pointsOrangePlayer);}
 }
 
 if(window.location.pathname.includes('gameOver.html')){
