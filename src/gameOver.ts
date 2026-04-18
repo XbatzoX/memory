@@ -10,6 +10,8 @@ function init():void{
     getDataFromLocalStorage();
     createThemeBackground();
     renderGameOverContainer(mySettings.theme);
+    renderWinnerContainer();
+
     
     console.log(resultObj);
     console.log(mySettings);
@@ -78,6 +80,13 @@ function setFinalPoints(){
     const contentSpanOrangeRef = document.getElementById('over_orange_value');
     if(contentSpanBlueRef){contentSpanBlueRef.innerText = String(resultObj.pointsBluePlayer);}
     if(contentSpanOrangeRef){contentSpanOrangeRef.innerText = String(resultObj.pointsOrangePlayer);}
+}
+
+function renderWinnerContainer(){
+    setTimeout(() => {
+        const contentSectionRef = document.getElementById('game_over');
+        if(contentSectionRef){contentSectionRef.classList.add('invisible');}
+    }, 2500);
 }
 
 if(window.location.pathname.includes('gameOver.html')){
