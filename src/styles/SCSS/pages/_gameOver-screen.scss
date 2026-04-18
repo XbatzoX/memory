@@ -1,3 +1,7 @@
+@use '../abstract/mixin' as mx;
+@use '../abstract/variables' as var;
+
+
 // .game-over {
 //   font-size: 48px;
 //   font-weight: bold;
@@ -18,4 +22,9 @@
     2px -2px 0 #a11,
     3px -3px 0 #800,
     4px -4px 5px rgba(0,0,0,0.5);
+}
+
+.gameOverScreen{
+  min-height: 100vh;
+  @include mx.flex-center();
 }

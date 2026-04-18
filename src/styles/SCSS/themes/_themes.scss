@@ -135,3 +135,27 @@
         color: map.get(var.$colors, orange-player);
     }
 }
+
+.gameOver{
+    @include mx.flex-center();
+    gap: map.get(var.$normSizes, ultra);
+
+    &__text-code_vibes{
+        font-family: 'MyRose';
+        font-size: 130px;
+        font-weight: bold;
+        color: #86E9D6;
+        text-shadow:
+            1px -1px 0 #85e0ce,
+            2px -2px 0 #71d0bd,
+            3px -3px 0 #499a8a,
+            4px -4px 5px rgba(0,0,0,0.5);
+    }
+
+    &__text-food_theme{
+        font-family: 'MyOne';
+        font-weight: 600;
+        font-size: 130px;
+        color: white;
+    }
+}

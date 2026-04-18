@@ -55,3 +55,22 @@ export function getFourCardInRowTemplate(i:number):string{
                 </div>
             </div>`;
 }
+
+export function getGameOverTemplate(theme:string){
+    return `<div class="gameOver">
+                <span id="game_over_text" class="gameOver__text-${theme}">Game Over</span>
+                <div class="scoreContainer">
+                    <span class="scoreText-${theme}">Final score</span>
+                    <div class="playerContainer-${theme} padding-s">
+                        <div class="playerContainer-${theme}__box">
+                            <img id="icon_blue_player" class="playerContainer-${theme}__img" src="../assets/img/player_blue_code_theme.svg" alt="blue player icon">
+                            <span id="player_blue_value" class="playerContainer-${theme}__valueBlue">0</span>
+                        </div>
+                        <div class="playerContainer-${theme}__box">
+                            <img id="icon_orange_player" class="playerContainer-${theme}__img" src="../assets/img/player_blue_code_theme.svg" alt="blue player icon">
+                            <span id="player_orange_value" class="playerContainer-${theme}__valueOrange">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+}

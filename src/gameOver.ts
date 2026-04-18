@@ -9,6 +9,7 @@ let mySettings:Settings;
 function init():void{
     getDataFromLocalStorage();
     createThemeBackground();
+    renderGameOverContainer(mySettings.theme);
     
     console.log(resultObj);
     console.log(mySettings);
@@ -30,6 +31,13 @@ function createThemeBackground():void{
     }
     if(mySettings.theme == 'food_theme'){
         if(contentBodyRef){contentBodyRef.style.backgroundColor = '#F58E39';}
+    }
+}
+
+function renderGameOverContainer(theme:string){
+    const contentSectionRef = document.getElementById('game_over');
+    if(contentSectionRef){
+        contentSectionRef.innerHTML = temp.getGameOverTemplate(theme);
     }
 }
 
