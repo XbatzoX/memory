@@ -85,8 +85,8 @@ export function getWinnerTemplate(theme:string){
                         <img id="winner_icon" class="winnerContainer-${theme}__playerIcon" src="/assets/icons/blue_winner_code_vibes.svg" alt="chess player icon">
                     </div>
                     <div class="exitFrame">
-                        <div id="back_start_container" class="exitContainer-${theme}">
-                            <span id="back_start_span" class="exitContainer-${theme}__text">Back to start</span>
+                        <div id="back_game_over_container" class="exitContainerGameOver-${theme}">
+                            <span id="back_game_over_span" class="exitContainerGameOver-${theme}__text">Back to start</span>
                         </div>
                     </div>
                 </div>

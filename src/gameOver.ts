@@ -92,6 +92,7 @@ function renderWinnerContainer():void{
             contentWinnerSectionRef.innerHTML = temp.getWinnerTemplate(mySettings.theme);
             checkWinnerIndication(resultObj.winner, mySettings.theme);
             checkWinnerImage(resultObj.winner, mySettings.theme);
+            checkExitButton(mySettings.theme);
         }
     }, 2500);
 }
@@ -129,6 +130,20 @@ function checkWinnerImage(winner:string, theme:string):void{
 function winnerImageCodeVibes(contentImageRef:HTMLImageElement, winner:string):void{
     if(winner == 'blue'){contentImageRef.src = '/assets/icons/blue_winner_code_vibes.svg';}
     if(winner == 'orange'){contentImageRef.src = '/assets/icons/orange_winner_code_vibes.svg';}
+}
+
+function checkExitButton(theme:string):void{
+    const contentDivRef = document.getElementById('back_game_over_container');
+    if(contentDivRef && theme == 'food_theme'){
+        let span = contentDivRef.querySelector('span');
+        if(span){span.innerText = 'Home';}
+        contentDivRef.addEventListener('mouseover', () => {
+            if(span){span.style.color = '#F58E39';}
+        });
+        contentDivRef.addEventListener('mouseout', () => {
+            if(span){span.style.color = 'white';}
+        });
+    }
 }
 
 if(window.location.pathname.includes('gameOver.html')){

@@ -3,7 +3,7 @@
 @use 'sass:map';
 
 .settingsFrame{
-    max-width: 1100px;
+    max-width: 1440px;
     margin: 0 auto;
     @include mx.flex-start();
     gap: 50px;

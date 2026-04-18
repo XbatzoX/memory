@@ -231,3 +231,46 @@
         padding: map.get(var.$sizes, xxl);
     }
 }
+
+.exitContainerGameOver-food_theme{
+    @include mx.flex-center(row);
+    gap:map.get(var.$sizes, m);
+    padding: map.get(var.$sizes, s);
+    background-color: map.get(var.$colors, orange-player);
+    border: 1px solid map.get(var.$colors, orange-player);
+    border-radius: map.get(var.$normSizes, s);
+    cursor: pointer;
+
+    &:hover{
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        background-color: map.get(var.$colors, exit-food);
+    }
+
+    &__text{
+        font-family: 'MyUnicase';
+        font-size: map.get(var.$sizes, m);
+        font-weight: 700;
+        color: white;
+    }
+}
+
+.exitContainerGameOver-code_vibes{
+    @include mx.flex-center(row);
+    gap:map.get(var.$sizes, m);
+    padding: map.get(var.$sizes, s);
+    background-color: rgba($color: map.get(var.$colors, code-bg), $alpha: 0.2);
+    border: 1px solid map.get(var.$colors, code-bg);
+    cursor: pointer;
+
+    &:hover{
+        border: 2px solid map.get(var.$colors, code-bg);
+        box-shadow: 0 6px 12px rgba($color: map.get(var.$colors, code-bg), $alpha: 0.2);
+    }
+
+    &__text{
+        font-family: 'MyRose';
+        font-size: map.get(var.$sizes, l);
+        font-weight: 700;
+        color: white;
+    }
+}
