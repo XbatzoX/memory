@@ -91,15 +91,15 @@ function renderWinnerContainer():void{
             if(mySettings.theme == 'food_theme'){document.getElementById('body_game_over')!.style.backgroundColor = "white";}
             contentWinnerSectionRef.innerHTML = temp.getWinnerTemplate(mySettings.theme);
             checkWinnerIndication(resultObj.winner, mySettings.theme);
+            checkWinnerImage(resultObj.winner, mySettings.theme);
         }
     }, 2500);
 }
 
 function checkWinnerIndication(winner:string, theme:string):void{
     const contentSpanRef = document.getElementById('winner_indication');
-    if(contentSpanRef && theme == 'code_vibes'){
-        winnerIndicationCodeVibes(contentSpanRef, winner);
-    }
+    if(contentSpanRef && theme == 'code_vibes'){winnerIndicationCodeVibes(contentSpanRef, winner);}
+    if(contentSpanRef && theme == 'food_theme'){winnerIndicationFoodTheme(contentSpanRef, winner);}
 }
 
 function winnerIndicationCodeVibes(contentSpanRef:HTMLElement, winner:string):void{
@@ -113,6 +113,22 @@ function winnerIndicationCodeVibes(contentSpanRef:HTMLElement, winner:string):vo
     }
     let text = contentSpanRef.textContent;
     contentSpanRef.textContent = text.toUpperCase();
+}
+
+function winnerIndicationFoodTheme(contentSpanRef:HTMLElement, winner:string):void{
+    if(winner == 'blue'){contentSpanRef.innerText = 'Blue Player';}
+    if(winner == 'orange'){contentSpanRef.innerText = 'Orange Player';}
+}
+
+function checkWinnerImage(winner:string, theme:string):void{
+    const contentImageRef = document.getElementById('winner_icon') as HTMLImageElement;
+    if(contentImageRef && (theme == 'code_vibes' || theme == 'food_theme')){winnerImageCodeVibes(contentImageRef, winner);}
+
+}
+
+function winnerImageCodeVibes(contentImageRef:HTMLImageElement, winner:string):void{
+    if(winner == 'blue'){contentImageRef.src = '/assets/icons/blue_winner_code_vibes.svg';}
+    if(winner == 'orange'){contentImageRef.src = '/assets/icons/orange_winner_code_vibes.svg';}
 }
 
 if(window.location.pathname.includes('gameOver.html')){

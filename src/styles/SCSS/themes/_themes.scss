@@ -176,7 +176,6 @@
 
 .winnerContainer-code_vibes{
     height: 100%;
-    // @include mx.flex-center();
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -220,6 +219,12 @@
         font-weight: 600;
         font-size: 80px;
         color: map.get(var.$colors, currentPlayer-food);
+    }
+
+    &__playerIconBox{
+        margin: map.get(var.$sizes, xxl);
+        background-color: map.get(var.$colors, bg-header-food);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     &__playerIcon{
