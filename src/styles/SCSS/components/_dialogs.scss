@@ -1,0 +1,29 @@
+@use '../abstract/mixin' as mx;
+@use '../abstract/variables' as var;
+@use 'sass:map';
+
+.dialogFrame{
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 540px;
+    transform: translate(0%, -500%);
+}
+
+.dialogFrame:focus{
+    outline: none;
+}
+
+.dialogCtrlBox{
+    @include mx.flex-center(row);
+    gap: map.get(var.$sizes, m);
+}
+
+.dialogOpened{
+    transform: translateX(0%) translateY(-50%);
+    transition: all 0.5s ease-in;
+}
+
+.dialogClosed{
+    transform: translateX(0%) translateY(-500%);
+    transition: all 0.5s ease-in;
+}

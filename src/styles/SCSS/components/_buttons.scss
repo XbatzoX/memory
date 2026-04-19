@@ -60,3 +60,50 @@
         }
     }
 }
+
+.closeDialogBtn-code_vibes{
+    background-color: map.get(var.$colors, back-cv);
+    padding: map.get(var.$sizes, m) map.get(var.$sizes, l);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 3px solid  map.get(var.$colors, back-cv);
+
+    &__text{
+        font-family: 'MyRose';
+        font-weight: 700;
+        font-size: map.get(var.$normSizes, l);
+        color: white;
+    }
+
+    &:hover{
+        cursor: pointer;
+        background-color: rgba(102, 207, 188, 0.7);
+    }
+}
+
+.exitGameBtnFrame-code_vibes{
+    width: 155px;
+}
+
+.exitGameBtn-code_vibes{
+    background-color: rgba(102, 207, 188, 0.2);
+    padding: map.get(var.$sizes, m) map.get(var.$sizes, l);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 2px solid  map.get(var.$colors, back-cv);
+    width: 152px;
+    display: flex;
+    justify-content: end;
+
+    &__text{
+        font-family: 'MyRose';
+        font-weight: 700;
+        font-size: map.get(var.$normSizes, l);
+        color:  map.get(var.$colors, back-cv);
+    }
+
+    &:hover{
+        cursor: pointer;
+        background-color: rgba(102, 207, 188, 0.3);
+        border-width: 3px;
+        width: 154px;
+    }
+}

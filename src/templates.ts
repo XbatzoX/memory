@@ -56,7 +56,7 @@ export function getFourCardInRowTemplate(i:number):string{
             </div>`;
 }
 
-export function getGameOverTemplate(theme:string){
+export function getGameOverTemplate(theme:string):string{
     return `<div class="gameOver">
                 <span id="game_over_text" class="gameOver__text-${theme}">Game Over</span>
                 <div class="scoreContainer">
@@ -75,7 +75,7 @@ export function getGameOverTemplate(theme:string){
             </div>`;
 }
 
-export function getWinnerTemplate(theme:string){
+export function getWinnerTemplate(theme:string):string{
     return `<div class="winnerSection-${theme}">
                 <div class="winnerContainer-${theme}">
                     <img id="id_confetti" class="winnerContainer-${theme}__image" src="/assets/icons/confetti_code_vibes.svg" alt="confetti image">
@@ -87,6 +87,24 @@ export function getWinnerTemplate(theme:string){
                     <div class="exitFrame">
                         <div id="back_game_over_container" class="exitContainerGameOver-${theme}">
                             <span id="back_game_over_span" class="exitContainerGameOver-${theme}__text">Back to start</span>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+}
+
+export function getDialogTemplate(theme:string):string{
+    return `<div id="dialog_container" class="dialogContainer-${theme}">
+                <span class="dialogContainer-${theme}__text">
+                    Are you sure you want to quit the game?
+                </span>
+                <div class="dialogCtrlBox">
+                    <div id="close_dialog_btn" class="closeDialogBtn-${theme}">
+                        <span class="closeDialogBtn-${theme}__text">Back to game</span>
+                    </div>
+                    <div class="exitGameBtnFrame-${theme}">
+                        <div id="exit_game_btn" class="exitGameBtn-${theme}">
+                            <span class="exitGameBtn-${theme}__text">Exit game</span>
                         </div>
                     </div>
                 </div>

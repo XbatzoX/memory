@@ -274,3 +274,17 @@
         color: white;
     }
 }
+
+.dialogContainer-code_vibes{
+    @include mx.flex-center();
+    gap: map.get(var.$sizes, ultra);
+
+    &__text{
+        font-family: 'MyRose';
+        font-weight: 700;
+        color: map.get(var.$colors, intro-bg);
+        font-size: map.get(var.$sizes, xl);
+        display: block;
+        text-align: center;
+    }
+}
