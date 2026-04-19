@@ -288,3 +288,17 @@
         text-align: center;
     }
 }
+
+.dialogContainer-food_theme{
+    @include mx.flex-center();
+    gap: map.get(var.$sizes, ultra);
+
+    &__text{
+        font-family: 'MyOne';
+        font-weight: 600;
+        color: map.get(var.$colors, currentPlayer-food);
+        font-size: 28px;
+        display: block;
+        text-align: center;
+    }
+}

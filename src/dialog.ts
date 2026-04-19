@@ -15,6 +15,7 @@ function createEventHandlerExitBtn():void{
             if(contentDialogRef){
                 contentDialogRef.innerHTML = temp.getDialogTemplate(myGameObj.theme);
                 openDialog(contentDialogRef);
+                checkTheme(myGameObj.theme);
                 createEventHandlerDialog();
                 createEventHandlerBackToGame();
                 exitGame();
@@ -87,11 +88,47 @@ function exitGame():void{
     }
 }
 
-function closeDialog(){
+function closeDialog():void{
     const contentDialogRef = document.getElementById('exit_dialog') as HTMLDialogElement;
     if(contentDialogRef){
         contentDialogRef.close();
         contentDialogRef.classList.remove('dialogOpened');
+    }
+}
+
+function checkTheme(theme:string):void{
+    setBorderRadiusFoodTheme(theme);
+    checkTextContent(theme);
+    createEventHandlerExitGameBtnFoodTheme(theme);
+}
+
+function setBorderRadiusFoodTheme(theme:string){
+    const contentDialogRef = document.getElementById('exit_dialog');
+    if(contentDialogRef && theme == 'food_theme'){contentDialogRef.style.borderRadius = "20px";}
+}
+
+function checkTextContent(theme:string){
+    const contentBackBtnRef = document.getElementById('close_dialog_btn');
+    if(contentBackBtnRef){
+        const contentSpanRef = contentBackBtnRef.querySelector('span');
+        if(contentSpanRef && theme == 'code_vibes'){contentSpanRef.innerText = 'Back to game';}
+        if(contentSpanRef && theme == 'food_theme'){contentSpanRef.innerText = 'No, back to game';}
+    }
+   
+}
+
+function createEventHandlerExitGameBtnFoodTheme(theme:string):void{
+    const contentBtnRef = document.getElementById('exit_game_btn') as HTMLDivElement;
+    if(contentBtnRef && theme == 'food_theme'){
+        let span = contentBtnRef.querySelector('span');
+        if(span){
+            contentBtnRef.addEventListener('mouseover', () => {
+                span.style.color = "white";
+            });
+            contentBtnRef.addEventListener('mouseout', () => {
+                span.style.color = "#F3832D";
+            });
+        }
     }
 }
 

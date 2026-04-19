@@ -107,3 +107,42 @@
         width: 154px;
     }
 }
+
+.closeDialogBtn-food_theme{
+    background-color: map.get(var.$colors, back-ft);
+    padding: map.get(var.$sizes, s) map.get(var.$sizes, m);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid map.get(var.$colors, border-ft);
+    border-radius: map.get(var.$normSizes, s);
+
+    &__text{
+        font-family: 'MyUnicase';
+        font-size: map.get(var.$sizes, m);
+        font-weight: 700;
+        color: white;
+    }
+
+    &:hover{
+        cursor: pointer;
+        background-color: map.get(var.$colors, border-ft);
+    }
+}
+
+.exitGameBtn-food_theme{
+    padding: map.get(var.$sizes, s) map.get(var.$sizes, m);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border: 1px solid map.get(var.$colors, border-ft);
+    border-radius: map.get(var.$normSizes, s);
+
+    &__text{
+        font-family: 'MyUnicase';
+        font-size: map.get(var.$sizes, m);
+        font-weight: 700;
+        color: map.get(var.$colors, border-ft);
+    }
+
+    &:hover{
+        cursor: pointer;
+        background-color: map.get(var.$colors, border-ft);
+    }
+}
