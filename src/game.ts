@@ -164,9 +164,11 @@ function renderBoard(boardSize:number):string{
     let outputString = '';
     if(size == 16){
         for (let index = 1; index <= size; index++) {
-            if(index % 4 == 1){
-                outputString += temp.getFourCardInRowTemplate(index);
-            }
+            if(index % 4 == 1){outputString += temp.getFourCardInRowTemplate(index);}
+        }
+    }else{
+        for (let index = 1; index <= size; index++) {
+            if(index % 4 == 1){outputString += temp.getSixCardInRowTemplate(index);}
         }
     }
     return outputString;

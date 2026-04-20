@@ -93,6 +93,7 @@ function renderWinnerContainer():void{
             checkWinnerIndication(resultObj.winner, mySettings.theme);
             checkWinnerImage(resultObj.winner, mySettings.theme);
             checkExitButton(mySettings.theme);
+            createEventHandlerExitBtn();
         }
     }, 2500);
 }
@@ -142,6 +143,15 @@ function checkExitButton(theme:string):void{
         });
         contentDivRef.addEventListener('mouseout', () => {
             if(span){span.style.color = 'white';}
+        });
+    }
+}
+
+function createEventHandlerExitBtn():void{
+    const contentBtnRef = document.getElementById('back_game_over_container') as HTMLDivElement;
+    if(contentBtnRef){
+        contentBtnRef.addEventListener('click', () => {
+            window.location.href = 'settings.html';
         });
     }
 }
