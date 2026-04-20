@@ -2,29 +2,6 @@
 @use '../abstract/variables' as var;
 @use 'sass:map';
 
-
-// .game-over {
-//   font-size: 48px;
-//   font-weight: bold;
-//   color: #ff3b3b;
-//   text-shadow:
-//     1px 1px 0 #c22,
-//     2px 2px 0 #a11,
-//     3px 3px 0 #800,
-//     4px 4px 5px rgba(0,0,0,0.5);
-// }
-
-.game-over {
-  font-size: 48px;
-  font-weight: bold;
-  color: #ff3b3b;
-  text-shadow:
-    1px -1px 0 #c22,
-    2px -2px 0 #a11,
-    3px -3px 0 #800,
-    4px -4px 5px rgba(0,0,0,0.5);
-}
-
 .gameOverScreen{
   min-height: 100vh;
   @include mx.flex-center();

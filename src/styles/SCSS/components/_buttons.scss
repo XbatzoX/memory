@@ -39,11 +39,11 @@
 
     &--highlight{
         box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.2),   // weicher Schatten
-        0 1px 0 rgba(255, 255, 255, 0.1) inset; // leichtes Highlight
+        0 2px 4px rgba(0, 0, 0, 0.2),   
+        0 1px 0 rgba(255, 255, 255, 0.1) inset; 
 
         &:hover{
-            transform: scale(1.05); // kommt nach vorne
+            transform: scale(1.05); 
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 
             .yellowBtn__img1{

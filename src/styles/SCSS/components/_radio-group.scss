@@ -14,14 +14,6 @@
     @include mx.flex-start();
     gap: map.get(var.$sizes, s);
 
-    // &:hover input[type="radio"]:checked::before{
-    //     transform: scale(0);
-    // }
-
-    // &:has(.radio:hover) input[type="radio"]:checked::before {
-    //     transform: scale(0);
-    // }
-
     &__caption{
         @include mx.flex-center(row);
         gap: map.get(var.$sizes, s);
@@ -62,7 +54,6 @@
         border: 2px solid #000; 
     }
 
-    // innerer Punkt (default unsichtbar)
     input[type="radio"]::before {
         content: "";
         width: 8px;
@@ -73,9 +64,8 @@
         background-color: #000;
     }
 
-     // checked Zustand → kleiner Punkt
     input[type="radio"]:checked::before {
-        transform: scale(0.6); // <- kleiner innerer Kreis
+        transform: scale(0.6); 
     }
 
     &__label{

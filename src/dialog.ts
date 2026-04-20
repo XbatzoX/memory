@@ -1,6 +1,9 @@
 import * as temp from './templates';
 import { myGameObj } from './game';
 
+/**
+ * This function is used to create Event Listener after loading of page
+ */
 function init():void{
     createEventHandlerExitBtn();
     createEventHandlerBodyClick();
