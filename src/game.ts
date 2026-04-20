@@ -168,7 +168,7 @@ function renderBoard(boardSize:number):string{
         }
     }else{
         for (let index = 1; index <= size; index++) {
-            if(index % 4 == 1){outputString += temp.getSixCardInRowTemplate(index);}
+            if(index % 6 == 1){outputString += temp.getSixCardInRowTemplate(index);}
         }
     }
     return outputString;
