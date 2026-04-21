@@ -206,6 +206,7 @@ function renderBoard(boardSize:number):string{
     return outputString;
 }
 
+/** This function is used to creates click events for every memory card and execute actions after click */
 function createClickEventForCard():void{
     let match = false;
     for (let index = 1; index <= myGameObj.boardSize; index++) {
@@ -224,15 +225,34 @@ function createClickEventForCard():void{
     }
 }
 
+/** This functions execute actions after match of card pair */
 function executeMatchActions():void{
     matchDesign();
     actualizePointIndication();
     findWinner();
 }
 
+/**
+ * This function is used to check if a match exist after click on card
+ * @param i - includes the board card number
+ * @returns - a boolean with match status
+ */
 function getDataOfCard(i:number):boolean{
     let match = false;
     let amountCards = myGameObj.boardSize / 2;
+    match = getDataOfCardPos1(i, amountCards);
+    if(!match){match = getDataOfCardPos2(i, amountCards);}
+    return match;
+}
+
+/**
+ * This function is used to check the first position of card on stack
+ * @param i - includes the card number to check
+ * @param amountCards - includes the amount of cards on stack
+ * @returns - a boolean with match status
+ */
+function getDataOfCardPos1(i:number, amountCards:number):boolean{
+    let match = false;
     let card:string;
     let permissionToFlip:boolean;
     for (let index = 0; index < amountCards; index++) {
@@ -242,7 +262,21 @@ function getDataOfCard(i:number):boolean{
             match = true;
             break;
         }
+    }
+    return match;
+}
 
+/**
+ * This function is used to check the second position of card on stack
+ * @param i - includes the card number to check
+ * @param amountCards - includes the amount of cards on stack
+ * @returns - a boolean with match status
+ */
+function getDataOfCardPos2(i:number, amountCards:number):boolean{
+    let match = false;
+    let card:string;
+    let permissionToFlip:boolean;
+    for (let index = 0; index < amountCards; index++) {
         card = logic.cardsArr[index].fieldObj.cardPos2.fieldPos;
         permissionToFlip = logic.cardsArr[index].fieldObj.cardPos2.flipPermission;
         if(card == `${i}` && permissionToFlip){
@@ -253,6 +287,7 @@ function getDataOfCard(i:number):boolean{
     return match;
 }
 
+/** This function customizes the point status of players after match of card pair */
 function actualizePointIndication():void{
     let player:string;
     let blueIndication = document.getElementById('player_blue_value');
@@ -264,6 +299,7 @@ function actualizePointIndication():void{
     }
 }
 
+/** This function is used to design the match state on card */
 function matchDesign():void{
     for (let index = 0; index < logic.playerArr.length; index++) {
        if(logic.playerArr[index].name == logic.currentPlayer){
@@ -271,18 +307,28 @@ function matchDesign():void{
         let card2 = logic.playerArr[index].pickedCards.cardPos2;
         let cardOnBoard1 = document.getElementById('card_' + card1);
         let cardOnBoard2 = document.getElementById('card_' + card2);
-        if(cardOnBoard1){
-            if(myGameObj.theme == 'code_vibes'){cardOnBoard1.style.border = "4px solid #4DD5BC";}
-            if(myGameObj.theme == 'food_theme'){cardOnBoard1.style.border = '4px solid #F3832D';}
-        }
-        if(cardOnBoard2){
-            if(myGameObj.theme == 'code_vibes'){cardOnBoard2.style.border = "4px solid #4DD5BC";}
-            if(myGameObj.theme == 'food_theme'){cardOnBoard2.style.border = '4px solid #F3832D';}
-        }
+        if(cardOnBoard1 && cardOnBoard2){designCardsOnBoard(cardOnBoard1, cardOnBoard2);}
        } 
     }
 }
 
+/**
+ * This function is used to design the border of cards if a pair is found on stack
+ * @param cardOnBoard1 - includes the HTML element of card 1
+ * @param cardOnBoard2 - includes the HTML element of card 2
+ */
+function designCardsOnBoard(cardOnBoard1:HTMLElement, cardOnBoard2:HTMLElement):void{
+    if(cardOnBoard1){
+        if(myGameObj.theme == 'code_vibes'){cardOnBoard1.style.border = "4px solid #4DD5BC";}
+        if(myGameObj.theme == 'food_theme'){cardOnBoard1.style.border = '4px solid #F3832D';}
+    }
+    if(cardOnBoard2){
+        if(myGameObj.theme == 'code_vibes'){cardOnBoard2.style.border = "4px solid #4DD5BC";}
+        if(myGameObj.theme == 'food_theme'){cardOnBoard2.style.border = '4px solid #F3832D';}
+    }
+}
+
+/** This function is used to find the winner of game */
 function findWinner():void{
     let maxPoints = myGameObj.boardSize / 2;
     let actualPoints = 0;
@@ -291,6 +337,15 @@ function findWinner():void{
         if(logic.playerArr[index].name == 'orange'){data.gameResult.pointsOrangePlayer = logic.playerArr[index].points;}
         actualPoints += logic.playerArr[index].points;
     }
+    putWinnerIntoDataObject(actualPoints, maxPoints);
+}
+
+/**
+ * This function finds the winner and put the winner into data object
+ * @param actualPoints -includes the actual points of both players
+ * @param maxPoints - includes the value of max points
+ */
+function putWinnerIntoDataObject(actualPoints:number, maxPoints:number):void{
     if(actualPoints >= maxPoints){
         if(data.gameResult.pointsBluePlayer > data.gameResult.pointsOrangePlayer){
             data.gameResult.winner = 'blue';
