@@ -6,6 +6,7 @@ import * as logic from './gameLogic';
 
 export let myGameObj:Settings;
 
+/** This function checks user inputs via radio buttons and refer to game page if inputs are valid */
 function createGame():void{
    if(isValid){
         localStorage.setItem('myGameSettings', JSON.stringify(data.gameSettings));
@@ -13,6 +14,7 @@ function createGame():void{
    }
 }
 
+/** Event listener with click event for start game button */
 const contentButtonRef = document.getElementById('start_button');
 if(contentButtonRef){
     contentButtonRef.addEventListener('click', () => {
@@ -20,6 +22,7 @@ if(contentButtonRef){
     });
 }
 
+/** This function is used load actions after game page is open */
 function initGame():void{
     loadDataFromLocalStorage();
     checkBodyBackgroundColor();
@@ -27,6 +30,7 @@ function initGame():void{
     createBoard();
 }
 
+/** This function creates the header of game page */
 function createHeader():void{
     const contentHeaderRef = document.getElementById('game_header');
     if(contentHeaderRef){contentHeaderRef.innerHTML = temp.renderHeader(myGameObj.theme);}
@@ -36,6 +40,7 @@ function createHeader():void{
     createEventListenerExitButtonFoodTheme();
 }
 
+/** This function creates the board of memory game */
 function createBoard():void{
     const contentBoardRef = document.getElementById('game_board');
     if(contentBoardRef){contentBoardRef.innerHTML = renderBoard(myGameObj.boardSize);}
@@ -43,16 +48,19 @@ function createBoard():void{
     logic.createLogicData();
 }
 
+/** This function is used to set the body background color of game page */
 function checkBodyBackgroundColor():void{
     checkCodeThemeBody();
     checkFoodThemeBody();
 }
 
+/** This functions loads the game settings object from local storage */
 function loadDataFromLocalStorage():void{
     let data = localStorage.getItem('myGameSettings');
     if(data){myGameObj = JSON.parse(data);}   
 }
 
+/** This function sets the background color of body in code vibes theme */
 function checkCodeThemeBody():void{
     if(myGameObj.theme == 'code_vibes'){
         const contentBodyRef = document.getElementById('body_game');
@@ -60,6 +68,7 @@ function checkCodeThemeBody():void{
     }
 }
 
+/** This function sets the background color of body in food theme */
 function checkFoodThemeBody():void{
     if(myGameObj.theme == 'food_theme'){
         const contentBodyRef = document.getElementById('body_game');
@@ -67,11 +76,13 @@ function checkFoodThemeBody():void{
     }
 }
 
+/** This function is used to check the player images for used theme */
 function checkPlayerImages():void{
     checkCodeThemePlayer();
     checkFoodThemePlayer();
 }
 
+/** This function is used set the player icons of code vibes theme */
 function checkCodeThemePlayer():void{
     if(myGameObj.theme == 'code_vibes'){
         const contentImgBlueRef = document.getElementById('icon_blue_player') as HTMLImageElement;
@@ -81,6 +92,7 @@ function checkCodeThemePlayer():void{
     }
 }
 
+/** This function is used to set the player icons for food theme */
 function checkFoodThemePlayer():void{
     if(myGameObj.theme == 'food_theme'){
         const contentImgBlueRef = document.getElementById('icon_blue_player') as HTMLImageElement;
@@ -90,11 +102,13 @@ function checkFoodThemePlayer():void{
     }
 }
 
+/** This function checks the current player player icon */
 function checkCurrentPlayer():void{
     checkCurrentPlayerCodeVibes();
     checkCurrentPlayerFoodTheme();
 }
 
+/** This function is used to set the current player indication for code vibes theme */
 function checkCurrentPlayerCodeVibes():void{
     if(myGameObj.theme == 'code_vibes'){
         const contentImgRef = document.getElementById('current_player_indication') as HTMLImageElement;
@@ -102,6 +116,7 @@ function checkCurrentPlayerCodeVibes():void{
     }
 }
 
+/** This function is used to set the current player indication for food theme */
 function checkCurrentPlayerFoodTheme():void{
     if(myGameObj.theme == 'food_theme'){
         const contentImgRef = document.getElementById('current_player_indication') as HTMLImageElement;
@@ -114,11 +129,13 @@ function checkCurrentPlayerFoodTheme():void{
     }
 }
 
+/** This function is used to check the design of exit button on game page */
 function checkExitButton():void{
     checkExitButtonCodeVibes();
     checkExitButtonFoodTheme();
 }
 
+/** This function designs the exit button for code vibes theme */
 function checkExitButtonCodeVibes():void{
     if(myGameObj.theme == 'code_vibes'){
         const contentImgRef = document.getElementById('exit_icon') as HTMLImageElement;
@@ -126,6 +143,7 @@ function checkExitButtonCodeVibes():void{
     }
 }
 
+/** This function designs the exit button for food theme */
 function checkExitButtonFoodTheme():void{
     if(myGameObj.theme == 'food_theme'){
         const contentImgRef = document.getElementById('exit_icon') as HTMLImageElement;
@@ -133,6 +151,7 @@ function checkExitButtonFoodTheme():void{
     }
 }
 
+/** This function creates a hover design for exit button if food theme is used */
 function createEventListenerExitButtonFoodTheme():void{
     const contentButtonFoodRef = document.getElementById('exit_container');
     if(contentButtonFoodRef && (myGameObj.theme == 'food_theme')){
@@ -147,18 +166,31 @@ function createEventListenerExitButtonFoodTheme():void{
     }
 }
 
+/**
+ * This function changes the exit icon image
+ * @param view - includes the information if mouseover or mouseout is active
+ */
 function changeExitIcon(view:string):void{
     const contentImgRef = document.getElementById('exit_icon') as HTMLImageElement;
     if(view == 'hover'){contentImgRef.src = '/assets/icons/exit_icon_code_theme.svg';}
     if(view == 'normal'){contentImgRef.src = '/assets/icons/exit_icon_food_theme.svg';}
 }
 
+/**
+ * This function is used to change the span color of exit button
+ * @param view - includes the information if mouseover or mouseout is active
+ */
 function changeTextColor(view:string):void{
     const contentSpanRef = document.getElementById('exit_span') as HTMLSpanElement;
     if(view == 'hover'){contentSpanRef.style.color = "white";}
     if(view == 'normal'){contentSpanRef.style.color = "#F58E39";}
 }
 
+/**
+ * This function is used to render the memory game board
+ * @param boardSize - includes the information which board size is choosen
+ * @returns - an output string of HTML elements
+ */
 function renderBoard(boardSize:number):string{
     let size = boardSize;
     let outputString = '';
@@ -184,16 +216,18 @@ function createClickEventForCard():void{
                     const card = (e.target as HTMLElement).closest('.card') as HTMLDivElement;
                     if(card){card.classList.toggle('is-flipped');}
                     match = logic.setDataAfterFlip(index);
-                    if(match){
-                        matchDesign();
-                        actualizePointIndication();
-                        findWinner();
-                    }
+                    if(match){executeMatchActions();}
                     console.log(logic.playerArr);
                 }
             });
         }   
     }
+}
+
+function executeMatchActions():void{
+    matchDesign();
+    actualizePointIndication();
+    findWinner();
 }
 
 function getDataOfCard(i:number):boolean{

@@ -9,6 +9,9 @@ function init():void{
     createEventHandlerBodyClick();
 }
 
+/**
+ * This function is used to create a click event for the exit button on game page
+ */
 function createEventHandlerExitBtn():void{
     const contentBtnRef = document.getElementById('exit_container') as HTMLDivElement;
     if(contentBtnRef){
@@ -17,16 +20,30 @@ function createEventHandlerExitBtn():void{
             const contentDialogRef = document.getElementById('exit_dialog') as HTMLDialogElement;
             if(contentDialogRef){
                 contentDialogRef.innerHTML = temp.getDialogTemplate(myGameObj.theme);
-                openDialog(contentDialogRef);
-                checkTheme(myGameObj.theme);
-                createEventHandlerDialog();
-                createEventHandlerBackToGame();
-                exitGame();
+                actionsAfterRendering(contentDialogRef);
             }
         });
     }
 }
 
+/**
+ * This function is used to execute functions directly after rendering of dialog element
+ * 
+ * @param contentDialogRef - includes the HTML dialog element
+ */
+function actionsAfterRendering(contentDialogRef:HTMLDialogElement):void{
+    openDialog(contentDialogRef);
+    checkTheme(myGameObj.theme);
+    createEventHandlerDialog();
+    createEventHandlerBackToGame();
+    exitGame();
+}
+
+/**
+ * This function opens the exit game dialog withe slide in animation
+ * 
+ * @param contentDialogRef - includes the HTML dialog element
+ */
 function openDialog(contentDialogRef:HTMLDialogElement):void{
     if(contentDialogRef){
         contentDialogRef.showModal();
@@ -34,6 +51,9 @@ function openDialog(contentDialogRef:HTMLDialogElement):void{
     }
 }
 
+/**
+ * This function creates an event for the back to game button on exit game dialog
+ */
 function createEventHandlerBackToGame():void{
     const contentBtnref = document.getElementById('close_dialog_btn') as HTMLDivElement;
     if(contentBtnref){
@@ -43,6 +63,9 @@ function createEventHandlerBackToGame():void{
     }
 }
 
+/**
+ * This function is used to close the dialog with a slide out animation
+ */
 async function closeDialogWithSlide():Promise<void>{
     const contentDialogRef = document.getElementById('exit_dialog') as HTMLDialogElement;
     if(contentDialogRef){
@@ -54,10 +77,19 @@ async function closeDialogWithSlide():Promise<void>{
     }
 }
 
+/**
+ * This function is used to set a timeout after an action
+ * 
+ * @param ms - includes waiting time in ms
+ * @returns - a promise 
+ */
 function timeout(ms:number):Promise<void>{
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+/**
+ * This function creates an click event for the body. if the dialog is open it will close with slide out animation
+ */
 function createEventHandlerBodyClick():void{
     const contentBodyRef = document.getElementById('body_game') as HTMLBodyElement;
     if(contentBodyRef){
@@ -68,10 +100,18 @@ function createEventHandlerBodyClick():void{
     }
 }
 
+/**
+ * This function is used to stop the event bubbling
+ * 
+ * @param event - includes the mouse click event from user
+ */
 function stopEventBubbling(event:MouseEvent):void{
     event.stopPropagation();
 }
 
+/**
+ * This function creates an event handler for stop the event bubbling if an user will click on dialog
+ */
 function createEventHandlerDialog():void{
     const contentDialogRef = document.getElementById('dialog_container');
     if(contentDialogRef){
@@ -81,6 +121,9 @@ function createEventHandlerDialog():void{
     }
 }
 
+/**
+ * This function ist used to close the dialog and refer back to start page
+ */
 function exitGame():void{
     const contentBtnRef = document.getElementById('exit_game_btn') as HTMLDivElement;
     if(contentBtnRef){
@@ -91,6 +134,9 @@ function exitGame():void{
     }
 }
 
+/**
+ * This function closes the dialog witout slide animation
+ */
 function closeDialog():void{
     const contentDialogRef = document.getElementById('exit_dialog') as HTMLDialogElement;
     if(contentDialogRef){
@@ -99,17 +145,32 @@ function closeDialog():void{
     }
 }
 
+/**
+ * This function checks the used theme and design the dialog 
+ * 
+ * @param theme - includes the information of used theme
+ */
 function checkTheme(theme:string):void{
     setBorderRadiusFoodTheme(theme);
     checkTextContent(theme);
     createEventHandlerExitGameBtnFoodTheme(theme);
 }
 
+/**
+ * This function set a border radius of dialog in food theme
+ * 
+ * @param theme - includes the information of used theme
+ */
 function setBorderRadiusFoodTheme(theme:string){
     const contentDialogRef = document.getElementById('exit_dialog');
     if(contentDialogRef && theme == 'food_theme'){contentDialogRef.style.borderRadius = "20px";}
 }
 
+/**
+ * This function checks used theme and and set the content of back to game button on dialog
+ * 
+ * @param theme - includes the information of used theme
+ */
 function checkTextContent(theme:string){
     const contentBackBtnRef = document.getElementById('close_dialog_btn');
     if(contentBackBtnRef){
@@ -120,6 +181,11 @@ function checkTextContent(theme:string){
    
 }
 
+/**
+ * This function creates hover event for exit game button from food theme
+ * 
+ * @param theme - includes the information of used theme
+ */
 function createEventHandlerExitGameBtnFoodTheme(theme:string):void{
     const contentBtnRef = document.getElementById('exit_game_btn') as HTMLDivElement;
     if(contentBtnRef && theme == 'food_theme'){
