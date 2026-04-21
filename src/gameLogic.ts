@@ -12,7 +12,7 @@ export let cardsArr:GameCard[];
 export let playerArr:GamePlayer[];
 export let currentPlayer:string = '';
 
-
+/** This function initialize the board and player data */
 export function createLogicData():void{
     let amountImages = myGameObj.boardSize / 2;
     createCodeVibesData(amountImages);
@@ -22,6 +22,10 @@ export function createLogicData():void{
     console.log(cardsArr);
 }
 
+/**
+ * This function creates the array of card instances for used code vibes theme
+ * @param amountImages - includes the amount of icons depending on board size
+ */
 function createCodeVibesData(amountImages:number):void{
     if(myGameObj.theme == 'code_vibes'){
         cardsArr = [];
@@ -31,6 +35,10 @@ function createCodeVibesData(amountImages:number):void{
     }
 }
 
+/**
+ * This function creates the array of card instances for used food theme
+ * @param amountImages - includes the amount of icons depending on board size
+ */
 function createFoodThemeData(amountImages:number):void{
     if(myGameObj.theme == 'food_theme'){
         cardsArr = [];
@@ -40,11 +48,16 @@ function createFoodThemeData(amountImages:number):void{
     }
 }
 
+/** This function is used to create the field assignment on board */
 function fieldAssignment():void{
     let boardArr = createBoardArr();
     getRandomFieldAndRemove(boardArr);
 }
 
+/**
+ * This function creates an array filled with numbers, depending on board size
+ * @returns - an array filled with numbers
+ */
 function createBoardArr():number[]{
     let boardArr:number[] = [];
     for (let index = 1; index <= myGameObj.boardSize; index++) {
@@ -53,6 +66,10 @@ function createBoardArr():number[]{
     return boardArr;
 }
 
+/**
+ * This function is used to create a random field number for poistion of cards
+ * @param boardArr - includes an array of numbers which represents the fields on stack
+ */
 function getRandomFieldAndRemove(boardArr:number[]):void{
     for (let index = 0; index < cardsArr.length; index++) {
         let fieldObj:Field = {
@@ -66,21 +83,36 @@ function getRandomFieldAndRemove(boardArr:number[]):void{
             },
             "value": 0
         };
-        let field = Math.floor(Math.random() * boardArr.length);
-        let valueArr = boardArr.splice(field, 1)[0];
-        fieldObj.cardPos1.fieldPos = `${valueArr}`;
-        fieldObj.value = cardsArr[index].cardNumber;
-        setFieldOnBoard(index, valueArr, fieldObj);
-
-        field = Math.floor(Math.random() * boardArr.length);
-        valueArr = boardArr.splice(field, 1)[0];
-        fieldObj.cardPos2.fieldPos = `${valueArr}`;
-        fieldObj.value = cardsArr[index].cardNumber;
-        setFieldOnBoard(index, valueArr, fieldObj);
+        findRandomFieldsAndSet(index, fieldObj, boardArr);
     }
 }
 
+/**
+ * This function gcraetes a random position on field and save the data 
+ * @param index - includes card number
+ * @param fieldObj - includes the fieldObject
+ * @param boardArr - includes array of available positions as number
+ */
+function findRandomFieldsAndSet(index:number, fieldObj:Field, boardArr:number[]):void{
+    let field = Math.floor(Math.random() * boardArr.length);
+    let valueArr = boardArr.splice(field, 1)[0];
+    fieldObj.cardPos1.fieldPos = `${valueArr}`;
+    fieldObj.value = cardsArr[index].cardNumber;
+    setFieldOnBoard(index, valueArr, fieldObj);
 
+    field = Math.floor(Math.random() * boardArr.length);
+    valueArr = boardArr.splice(field, 1)[0];
+    fieldObj.cardPos2.fieldPos = `${valueArr}`;
+    fieldObj.value = cardsArr[index].cardNumber;
+    setFieldOnBoard(index, valueArr, fieldObj);
+}
+
+/**
+ * This function is used to set the field on board and save the data
+ * @param cardNumber - includes the card number
+ * @param fieldValue - includes the position on board
+ * @param fielObj - includes the field object
+ */
 function setFieldOnBoard(cardNumber:number, fieldValue:number, fielObj:Field):void{
     const contentFrontRef = document.getElementById('cardFace_' + fieldValue) as HTMLImageElement;
     const contentBackRef = document.getElementById('cardBack_' + fieldValue) as HTMLImageElement;
@@ -91,6 +123,7 @@ function setFieldOnBoard(cardNumber:number, fieldValue:number, fielObj:Field):vo
     }
 }
 
+/** This function is used to declare the starting player */
 function initializePlayer():void{
     playerArr = [];
     playerArr.push(new GamePlayer('blue'));
@@ -105,6 +138,10 @@ function initializePlayer():void{
     console.log(playerArr);
 }
 
+/**
+ * This function designs the current player on board
+ * @param player - includes the current player as a string
+ */
 function setCurrentPlayer(player:string):void{
     let contentImgRef = document.getElementById('current_player_indication') as HTMLImageElement;
     let contentDivRef = document.getElementById('cp_indication_container') as HTMLDivElement;
@@ -120,6 +157,11 @@ function setCurrentPlayer(player:string):void{
     }
 }
 
+/**
+ * This function checks if match exist after flipping of card
+ * @param i - includes the card number
+ * @returns - a boolean with match information
+ */
 export function setDataAfterFlip(i:number):boolean{
     let match = false;
     for (let index = 0; index < playerArr.length; index++) {
@@ -137,6 +179,7 @@ export function setDataAfterFlip(i:number):boolean{
     return match;
 }
 
+/** This function checks if a player found a match and changed current player if not */
 function checkMatch():boolean{
     let match = false;
     for (let index = 0; index < playerArr.length; index++) {
@@ -155,6 +198,10 @@ function checkMatch():boolean{
     return match;
 }
 
+/**
+ * This function removes the flip permisiion from card
+ * @param i - includes the card number
+ */
 function removeFlipPermissionFromCard(i:number):void{
     let card = '';
     for (let index = 0; index < cardsArr.length; index++) {
@@ -169,57 +216,140 @@ function removeFlipPermissionFromCard(i:number):void{
 function putValueOfCardToPlayerStorage(attempts:number, i:number):void{
     let card = '';
     let cardNumber = 0;
+    let found:boolean;
     if(attempts == 2){
-        for (let index = 0; index < cardsArr.length; index++) {
-            card = cardsArr[index].fieldObj.cardPos1.fieldPos;
-            if(card == `${i}`){
-                cardNumber = cardsArr[index].cardNumber;
-                for (let index = 0; index < playerArr.length; index++) {
-                    if(playerArr[index].name == currentPlayer){
-                        playerArr[index].setCardValue1(cardNumber);
-                        playerArr[index].setCardPos(1, i);
-                    }
-                }
-                break;
-            }
-            card = cardsArr[index].fieldObj.cardPos2.fieldPos;
-            if(card == `${i}`){
-                cardNumber = cardsArr[index].cardNumber;
-                for (let index = 0; index < playerArr.length; index++) {
-                    if(playerArr[index].name == currentPlayer){
-                        playerArr[index].setCardValue1(cardNumber);
-                        playerArr[index].setCardPos(1, i);
-                    }
-                }
-                break;
-            }
-        }
+        // for (let index = 0; index < cardsArr.length; index++) {
+        //     card = cardsArr[index].fieldObj.cardPos1.fieldPos;
+        //     if(card == `${i}`){
+        //         cardNumber = cardsArr[index].cardNumber;
+        //         for (let index = 0; index < playerArr.length; index++) {
+        //             if(playerArr[index].name == currentPlayer){
+        //                 playerArr[index].setCardValue1(cardNumber);
+        //                 playerArr[index].setCardPos(1, i);
+        //             }
+        //         }
+        //         break;
+        //     }
+            // card = cardsArr[index].fieldObj.cardPos2.fieldPos;
+            // if(card == `${i}`){
+            //     cardNumber = cardsArr[index].cardNumber;
+            //     for (let index = 0; index < playerArr.length; index++) {
+            //         if(playerArr[index].name == currentPlayer){
+            //             playerArr[index].setCardValue1(cardNumber);
+            //             playerArr[index].setCardPos(1, i);
+            //         }
+            //     }
+            //     break;
+            // }
+        // }
+        found = attempts2CardPos1(i, card, cardNumber);
+        if(!found){attempts2CardPos2(i, card, cardNumber);}
     }
 
     if(attempts == 1){
-        for (let index = 0; index < cardsArr.length; index++) {
-            card = cardsArr[index].fieldObj.cardPos1.fieldPos;
-            if(card == `${i}`){
-                cardNumber = cardsArr[index].cardNumber;
-                for (let index = 0; index < playerArr.length; index++) {
-                    if(playerArr[index].name == currentPlayer){
-                        playerArr[index].setCardValue2(cardNumber);
-                        playerArr[index].setCardPos(2, i);
-                    }
+        // for (let index = 0; index < cardsArr.length; index++) {
+        //     card = cardsArr[index].fieldObj.cardPos1.fieldPos;
+        //     if(card == `${i}`){
+        //         cardNumber = cardsArr[index].cardNumber;
+        //         for (let index = 0; index < playerArr.length; index++) {
+        //             if(playerArr[index].name == currentPlayer){
+        //                 playerArr[index].setCardValue2(cardNumber);
+        //                 playerArr[index].setCardPos(2, i);
+        //             }
+        //         }
+        //         break;
+        //     }
+            // card = cardsArr[index].fieldObj.cardPos2.fieldPos;
+            // if(card == `${i}`){
+            //     cardNumber = cardsArr[index].cardNumber;
+            //     for (let index = 0; index < playerArr.length; index++) {
+            //         if(playerArr[index].name == currentPlayer){
+            //             playerArr[index].setCardValue2(cardNumber);
+            //             playerArr[index].setCardPos(2, i);
+            //         }
+            //     }
+            //     break;
+            // }
+        // }
+        found = attempts1CardPos1(i, card, cardNumber);
+        if(!found){attempts1CardPos2(i, card, cardNumber);}
+    }
+}
+
+function attempts2CardPos1(i:number, card:string, cardNumber:number):boolean{
+   let found = false;
+    for (let index = 0; index < cardsArr.length; index++) {
+        card = cardsArr[index].fieldObj.cardPos1.fieldPos;
+        if(card == `${i}`){
+            setCardDataValue1(cardNumber, index, i);
+            found = true;
+            break;
+        }
+    }
+    return found;
+}
+
+function setCardDataValue1(cardNumber:number, index:number, i:number):void{
+    cardNumber = cardsArr[index].cardNumber;
+    for (let index = 0; index < playerArr.length; index++) {
+        if(playerArr[index].name == currentPlayer){
+            playerArr[index].setCardValue1(cardNumber);
+            playerArr[index].setCardPos(1, i);
+        }
+    }
+}
+
+function attempts2CardPos2(i:number, card:string, cardNumber:number):void{
+    for (let index = 0; index < cardsArr.length; index++) {
+        card = cardsArr[index].fieldObj.cardPos2.fieldPos;
+        if(card == `${i}`){
+            cardNumber = cardsArr[index].cardNumber;
+            for (let index = 0; index < playerArr.length; index++) {
+                if(playerArr[index].name == currentPlayer){
+                    playerArr[index].setCardValue1(cardNumber);
+                    playerArr[index].setCardPos(1, i);
                 }
-                break;
             }
-            card = cardsArr[index].fieldObj.cardPos2.fieldPos;
-            if(card == `${i}`){
-                cardNumber = cardsArr[index].cardNumber;
-                for (let index = 0; index < playerArr.length; index++) {
-                    if(playerArr[index].name == currentPlayer){
-                        playerArr[index].setCardValue2(cardNumber);
-                        playerArr[index].setCardPos(2, i);
-                    }
+            break;
+        }
+    }
+}
+
+function attempts1CardPos1(i:number, card:string, cardNumber:number):boolean{
+    let found = false;
+    for (let index = 0; index < cardsArr.length; index++) {
+        card = cardsArr[index].fieldObj.cardPos1.fieldPos;
+        if(card == `${i}`){
+            setCardDataValue2(cardNumber, index, i);
+            found = true;
+            break;
+        }
+    }
+    return found;
+}
+
+function setCardDataValue2(cardNumber:number, index:number, i:number):void{
+    cardNumber = cardsArr[index].cardNumber;
+    for (let index = 0; index < playerArr.length; index++) {
+        if(playerArr[index].name == currentPlayer){
+            playerArr[index].setCardValue2(cardNumber);
+            playerArr[index].setCardPos(2, i);
+        }
+    }
+}
+
+function attempts1CardPos2(i:number, card:string, cardNumber:number):void{
+    for (let index = 0; index < cardsArr.length; index++) {
+        card = cardsArr[index].fieldObj.cardPos2.fieldPos;
+        if(card == `${i}`){
+            cardNumber = cardsArr[index].cardNumber;
+            for (let index = 0; index < playerArr.length; index++) {
+                if(playerArr[index].name == currentPlayer){
+                    playerArr[index].setCardValue2(cardNumber);
+                    playerArr[index].setCardPos(2, i);
                 }
-                break;
             }
+            break;
         }
     }
 }
