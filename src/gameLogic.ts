@@ -20,7 +20,7 @@ export function createLogicData():void{
     createFoodThemeData(amountImages);
     fieldAssignment();
     initializePlayer();
-    console.log(cardsArr);
+    // console.log(cardsArr);
 }
 
 /**
@@ -136,7 +136,7 @@ function initializePlayer():void{
         playerArr[1].setPermission(true);
         setCurrentPlayer('orange');
     }
-    console.log(playerArr);
+    // console.log(playerArr);
 }
 
 /**

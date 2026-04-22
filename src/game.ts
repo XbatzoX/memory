@@ -218,7 +218,7 @@ function createClickEventForCard():void{
                     if(card){card.classList.toggle('is-flipped');}
                     match = logic.setDataAfterFlip(index);
                     if(match){executeMatchActions();}
-                    console.log(logic.playerArr);
+                    // console.log(logic.playerArr);
                 }
             });
         }   

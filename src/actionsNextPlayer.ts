@@ -19,14 +19,21 @@ function changePlayerToOrange(isChanged:boolean):boolean{
             if(logic.playerArr[index].name == logic.currentPlayer){
                 clearPlayerData(index);
                 logic.setPlayer('orange');
+                changed = setDataOrangePlayer();
                 break;
-            }
+            } 
         }
     }
+    return changed;
+}
+
+function setDataOrangePlayer():boolean{
+    let changed = false;
     if(logic.currentPlayer == 'orange'){
         setDataForNextPlayer();
         changed = true;
-    }return changed;
+    }
+    return changed;
 }
 
 /**
@@ -41,14 +48,21 @@ function changePlayerToBlue(isChanged:boolean):boolean{
             if(logic.playerArr[index].name == logic.currentPlayer){
                 clearPlayerData(index);
                 logic.setPlayer('blue');
+                changed = setDataBluePlayer();
                 break;
-            }
+            } 
         }
     }
+    return changed;
+}
+
+function setDataBluePlayer():boolean{
+    let changed = false;
     if(logic.currentPlayer == 'blue'){
         setDataForNextPlayer();
         changed = true;
-    }return changed;
+    }
+    return changed;
 }
 
 /**
