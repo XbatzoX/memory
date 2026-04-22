@@ -3,6 +3,7 @@ import * as data from './dataObj';
 import { GameCard } from './card.class';
 import { GamePlayer } from './player.class';
 import { Field } from './interfaces';
+import * as actions from './actionsNextPlayer';
 
 let imagesCodeVibes = data.codeVibesImageArr;
 let backSideCodeVibes = '/assets/icons/code_theme/card_bg_code_theme.svg';
@@ -189,8 +190,8 @@ function checkMatch():boolean{
                 playerArr[index].setAttempts(2);
                 match = true;
             }else{
-                flipBackWithoutMatch();
-                changePlayer();
+                actions.flipBackWithoutMatch();
+                actions.changePlayer();
             }
             break;
         }
@@ -213,69 +214,32 @@ function removeFlipPermissionFromCard(i:number):void{
     }
 }
 
+/**
+ * This function is used to pick the cardnumber with values and put it into storage
+ * @param attempts - includes attempts of player
+ * @param i - includes the card number
+ */
 function putValueOfCardToPlayerStorage(attempts:number, i:number):void{
     let card = '';
     let cardNumber = 0;
     let found:boolean;
     if(attempts == 2){
-        // for (let index = 0; index < cardsArr.length; index++) {
-        //     card = cardsArr[index].fieldObj.cardPos1.fieldPos;
-        //     if(card == `${i}`){
-        //         cardNumber = cardsArr[index].cardNumber;
-        //         for (let index = 0; index < playerArr.length; index++) {
-        //             if(playerArr[index].name == currentPlayer){
-        //                 playerArr[index].setCardValue1(cardNumber);
-        //                 playerArr[index].setCardPos(1, i);
-        //             }
-        //         }
-        //         break;
-        //     }
-            // card = cardsArr[index].fieldObj.cardPos2.fieldPos;
-            // if(card == `${i}`){
-            //     cardNumber = cardsArr[index].cardNumber;
-            //     for (let index = 0; index < playerArr.length; index++) {
-            //         if(playerArr[index].name == currentPlayer){
-            //             playerArr[index].setCardValue1(cardNumber);
-            //             playerArr[index].setCardPos(1, i);
-            //         }
-            //     }
-            //     break;
-            // }
-        // }
         found = attempts2CardPos1(i, card, cardNumber);
         if(!found){attempts2CardPos2(i, card, cardNumber);}
     }
-
     if(attempts == 1){
-        // for (let index = 0; index < cardsArr.length; index++) {
-        //     card = cardsArr[index].fieldObj.cardPos1.fieldPos;
-        //     if(card == `${i}`){
-        //         cardNumber = cardsArr[index].cardNumber;
-        //         for (let index = 0; index < playerArr.length; index++) {
-        //             if(playerArr[index].name == currentPlayer){
-        //                 playerArr[index].setCardValue2(cardNumber);
-        //                 playerArr[index].setCardPos(2, i);
-        //             }
-        //         }
-        //         break;
-        //     }
-            // card = cardsArr[index].fieldObj.cardPos2.fieldPos;
-            // if(card == `${i}`){
-            //     cardNumber = cardsArr[index].cardNumber;
-            //     for (let index = 0; index < playerArr.length; index++) {
-            //         if(playerArr[index].name == currentPlayer){
-            //             playerArr[index].setCardValue2(cardNumber);
-            //             playerArr[index].setCardPos(2, i);
-            //         }
-            //     }
-            //     break;
-            // }
-        // }
         found = attempts1CardPos1(i, card, cardNumber);
         if(!found){attempts1CardPos2(i, card, cardNumber);}
     }
 }
 
+/**
+ * This function set card values of card position 1 to storage if player has 2 attempts
+ * @param i - includes card number
+ * @param card - includes card from stack
+ * @param cardNumber - includes value of card
+ * @returns - a boolean information 
+ */
 function attempts2CardPos1(i:number, card:string, cardNumber:number):boolean{
    let found = false;
     for (let index = 0; index < cardsArr.length; index++) {
@@ -289,6 +253,12 @@ function attempts2CardPos1(i:number, card:string, cardNumber:number):boolean{
     return found;
 }
 
+/**
+ * This function set values to instance of card
+ * @param cardNumber - includes value of card
+ * @param index - includes index number of cardArr
+ * @param i - includes card number
+ */
 function setCardDataValue1(cardNumber:number, index:number, i:number):void{
     cardNumber = cardsArr[index].cardNumber;
     for (let index = 0; index < playerArr.length; index++) {
@@ -299,6 +269,12 @@ function setCardDataValue1(cardNumber:number, index:number, i:number):void{
     }
 }
 
+/**
+ * This function set card values of card position 2 to storage if player has 2 attempts
+ * @param i - includes card number
+ * @param card - includes index number of cardArr
+ * @param cardNumber - includes value of card
+ */
 function attempts2CardPos2(i:number, card:string, cardNumber:number):void{
     for (let index = 0; index < cardsArr.length; index++) {
         card = cardsArr[index].fieldObj.cardPos2.fieldPos;
@@ -315,6 +291,13 @@ function attempts2CardPos2(i:number, card:string, cardNumber:number):void{
     }
 }
 
+/**
+ * This function set card values of card position 1 to storage if player has 1 attempts
+ * @param i  - includes card number
+ * @param card - includes index number of cardArr
+ * @param cardNumber - includes value of card
+ * @returns - a boolean feedback if match
+ */
 function attempts1CardPos1(i:number, card:string, cardNumber:number):boolean{
     let found = false;
     for (let index = 0; index < cardsArr.length; index++) {
@@ -328,6 +311,12 @@ function attempts1CardPos1(i:number, card:string, cardNumber:number):boolean{
     return found;
 }
 
+/**
+ * This function set values to instance of card
+ * @param cardNumber - includes value of card
+ * @param index - includes index number of cardArr
+ * @param i - includes card number
+ */
 function setCardDataValue2(cardNumber:number, index:number, i:number):void{
     cardNumber = cardsArr[index].cardNumber;
     for (let index = 0; index < playerArr.length; index++) {
@@ -338,6 +327,12 @@ function setCardDataValue2(cardNumber:number, index:number, i:number):void{
     }
 }
 
+/**
+ * This function set card values of card position 2 to storage if player has 1 attempt
+ * @param i - includes card number
+ * @param card - includes index number of cardArr
+ * @param cardNumber - includes value of card
+ */
 function attempts1CardPos2(i:number, card:string, cardNumber:number):void{
     for (let index = 0; index < cardsArr.length; index++) {
         card = cardsArr[index].fieldObj.cardPos2.fieldPos;
@@ -354,81 +349,6 @@ function attempts1CardPos2(i:number, card:string, cardNumber:number):void{
     }
 }
 
-function changePlayer():void{
-    let changed = false;
-    if(currentPlayer == 'blue' && !changed){
-        for (let index = 0; index < playerArr.length; index++) {
-            if(playerArr[index].name == currentPlayer){
-                playerArr[index].permission = false;
-                playerArr[index].cardValues.card1 = 0;
-                playerArr[index].cardValues.card2 = 0;
-                currentPlayer = 'orange';
-            }
-            if(currentPlayer == 'orange'){
-                for (let index = 0; index < playerArr.length; index++) {
-                    if(playerArr[index].name == currentPlayer){
-                        playerArr[index].attempts = 2;
-                        playerArr[index].permission = true;
-                    }
-                }
-                changed = true;
-                break;
-            }
-        }
-    }
-
-    if(currentPlayer == 'orange' && !changed){
-        for (let index = 0; index < playerArr.length; index++) {
-            if(playerArr[index].name == currentPlayer){
-                playerArr[index].permission = false;
-                playerArr[index].cardValues.card1 = 0;
-                playerArr[index].cardValues.card2 = 0;
-                currentPlayer = 'blue';
-            }
-            if(currentPlayer == 'blue'){
-                for (let index = 0; index < playerArr.length; index++) {
-                    if(playerArr[index].name == currentPlayer){
-                        playerArr[index].attempts = 2;
-                        playerArr[index].permission = true;
-                    }
-                }
-                changed = true;
-                break;
-            }
-        }
-    }
-}
-
-function flipBackWithoutMatch():void{
-   let player:string;
-    for (let index = 0; index < playerArr.length; index++) {
-        player = playerArr[index].name;
-        if(player == currentPlayer){
-            setTimeout(() => {
-                let card1 = playerArr[index].pickedCards.cardPos1;
-                let card2 = playerArr[index].pickedCards.cardPos2;
-                let cardOnBoard = document.getElementById('card_' + card1);
-                if(cardOnBoard){
-                    cardOnBoard.classList.toggle('is-flipped');
-                    setFlipPermissionFromCard(card1);
-                }
-                cardOnBoard = document.getElementById('card_' + card2);
-                if(cardOnBoard){
-                    cardOnBoard.classList.toggle('is-flipped');
-                    setFlipPermissionFromCard(card2);
-                }
-            }, 1000);
-        }
-    }
-}
-
-function setFlipPermissionFromCard(i:number):void{
-    let card = '';
-    for (let index = 0; index < cardsArr.length; index++) {
-        card = cardsArr[index].fieldObj.cardPos1.fieldPos;
-        if(card == `${i}`){cardsArr[index].fieldObj.cardPos1.flipPermission = true;}
-
-        card = cardsArr[index].fieldObj.cardPos2.fieldPos;
-        if(card == `${i}`){cardsArr[index].fieldObj.cardPos2.flipPermission = true;}
-    }
+export function setPlayer(player:string):void{
+    currentPlayer = player;
 }
