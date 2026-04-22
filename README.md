@@ -90,20 +90,3 @@ Dieses Projekt wurde erstellt, um:
 * UI-Komponenten strukturiert zu entwickeln
 * Event-Handling & Game-Logic zu verstehen
 
----
-
-## 📸 Screenshots
-
-*(optional einfügen)*
-
----
-
-## 🧑‍💻 Autor
-
-Dein Name
-
----
-
-## 📄 Lizenz
-
-MIT License
