@@ -1,3 +1,8 @@
+/**
+ * This template function is used to render the header of game page
+ * @param id - includes the used theme
+ * @returns - a string filled with HTML elements
+ */
 export function renderHeader(id:string):string{
     return `<div  class="gameHeader__frame padding-m">
                 <div class="gameHeader__container-${id}">
@@ -27,6 +32,11 @@ export function renderHeader(id:string):string{
             </div>`;
 }
 
+/**
+ * This function is used to render a board of 4 cards in a row
+ * @param i - includes the card number on board
+ * @returns - a string filled with HTML elements
+ */
 export function getFourCardInRowTemplate(i:number):string{
     return `<div class="cardRow">
                 <div id="card_${i}" class="card">
@@ -56,6 +66,11 @@ export function getFourCardInRowTemplate(i:number):string{
             </div>`;
 }
 
+/**
+ * This function is used to render a board of 6 cards in a row
+ * @param i - includes the card number on board
+ * @returns - a string filled with HTML elements
+ */
 export function getSixCardInRowTemplate(i:number):string{
     return `<div class="cardRow">
                 <div id="card_${i}" class="card">
@@ -97,6 +112,11 @@ export function getSixCardInRowTemplate(i:number):string{
             </div>`;
 }
 
+/**
+ * This function is used to render the game over container in correct theme
+ * @param theme - includes the information of used theme
+ * @returns - a string filled with HTML elements
+ */
 export function getGameOverTemplate(theme:string):string{
     return `<div class="gameOver">
                 <span id="game_over_text" class="gameOver__text-${theme}">Game Over</span>
@@ -116,6 +136,11 @@ export function getGameOverTemplate(theme:string):string{
             </div>`;
 }
 
+/**
+ * This template function is used to render the winner container in correct theme
+ * @param theme - includes the information of used theme
+ * @returns - a string filled with HTML elements
+ */
 export function getWinnerTemplate(theme:string):string{
     return `<div class="winnerSection-${theme}">
                 <div class="winnerContainer-${theme}">
@@ -134,6 +159,11 @@ export function getWinnerTemplate(theme:string):string{
             </div>`;
 }
 
+/**
+ * This template function is used to render the exit game dialog in correct theme design
+ * @param theme - includes the information of used theme
+ * @returns - a string filled with HTML elements
+ */
 export function getDialogTemplate(theme:string):string{
     return `<div id="dialog_container" class="dialogContainer-${theme}">
                 <span class="dialogContainer-${theme}__text">
