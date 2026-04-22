@@ -7,5 +7,3 @@ import './templates';
 import './game';
 import './gameOver';
 import './dialog';
-
-// console.log(data.gameSettings.theme);
