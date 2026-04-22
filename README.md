@@ -69,25 +69,6 @@ src/
 │   ├── ui/
 │   └── main.ts
 ```
-
----
-
-## ⚙️ Installation & Start
-
-```bash
-# Repository klonen
-git clone https://github.com/your-username/memory-game.git
-
-# Projekt öffnen
-cd memory-game
-
-# Abhängigkeiten installieren
-npm install
-
-# Dev Server starten
-npm run dev
-```
-
 ---
 
 ## 🧠 Spiel-Logik (Kurz erklärt)
