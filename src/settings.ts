@@ -5,6 +5,11 @@ let validTheme = false;
 let validPlayer = false;
 let validBoardSize = false;
 
+/**
+ * This function designs the hover effect of radio buttons
+ * @param idSpan - includes the id of span
+ * @param idDiv - includes the id of div container
+ */
 function radioHoverEffect(idSpan:string, idDiv:string):void{
     const contentSpanRef = document.getElementById(idSpan);
     const contentDivRef = document.getElementById(idDiv);
@@ -12,15 +17,28 @@ function radioHoverEffect(idSpan:string, idDiv:string):void{
     if(contentDivRef){showDivider(contentDivRef);};
 }
 
+/**
+ * This function highlight the text of button description
+ * @param element - includes HTML element
+ */
 function highlightText(element:HTMLElement):void{
     element.classList.remove('radio__label');
     element.classList.add('radio__label--highlight');
 }
 
+/**
+ * This function is used to show the divider
+ * @param element - includes HTML element
+ */
 function showDivider(element:HTMLElement):void{
     element.classList.remove('invisible');
 }
 
+/**
+ * This function is used to set the radio buttons to normal view
+ * @param idSpan - includes the id of span
+ * @param idDiv - includes the id of div container
+ */
 function radioNormalView(idSpan:string, idDiv:string):void{
     const contentSpanRef = document.getElementById(idSpan);
     const contentDivRef = document.getElementById(idDiv);
@@ -28,15 +46,24 @@ function radioNormalView(idSpan:string, idDiv:string):void{
     if(contentDivRef){removeDividerContainer(contentDivRef);};
 }
 
+/**
+ * This function removes the highlight indication from text
+ * @param element - includes HTML element
+ */
 function removeHighlightFromText(element:HTMLElement):void{
     element.classList.remove('radio__label--highlight');
     element.classList.add('radio__label');
 }
 
+/**
+ * This function is used to remove the divider from radio button line
+ * @param element - includes HTML element
+ */
 function removeDividerContainer(element:HTMLElement):void{
     element.classList.add('invisible');
 }
 
+/** This event listener handles hover effect and shown image on settings page */
 const labelCodeTheme = document.getElementById('label_code_theme');
 if(labelCodeTheme){
     labelCodeTheme.addEventListener('mouseover', () => {
@@ -52,6 +79,7 @@ if(labelCodeTheme){
     });
 }
 
+/** This event listener handles hover effect and shown image on settings page */
 const labelFoodTheme = document.getElementById('label_food_theme');
 if(labelFoodTheme){
     labelFoodTheme.addEventListener('mouseover', () => {
@@ -67,6 +95,7 @@ if(labelFoodTheme){
     });
 }
 
+/** This event listener checks the input fields if state changed */
 const inputTheme = document.querySelectorAll<HTMLInputElement>('input[name = "theme"]');
 inputTheme.forEach(input => {
     input.addEventListener('change', () => {
@@ -77,6 +106,10 @@ inputTheme.forEach(input => {
     });
 });
 
+/**
+ * This function is used to design the input field theme if code vibes is checked
+ * @param input - includes HTML input element
+ */
 function actionsCodeTheme(input:HTMLInputElement):void{
     if(input.value == 'code_vibes'){
         if(input.checked){
@@ -89,6 +122,10 @@ function actionsCodeTheme(input:HTMLInputElement):void{
     }
 }
 
+/**
+ * This function is used to design the input field theme if food theme is checked
+ * @param input - includes HTML input element
+ */
 function actionsFoodTheme(input:HTMLInputElement):void{
     if(input.value == 'food_theme'){
         if(input.checked){
@@ -101,6 +138,7 @@ function actionsFoodTheme(input:HTMLInputElement):void{
     }
 }
 
+/** This event listener handles the hover effect of player selection */
 const labelBluePlayer = document.getElementById('label_blue_player');
 if(labelBluePlayer){
     labelBluePlayer.addEventListener('mouseover', () => {
@@ -114,6 +152,7 @@ if(labelBluePlayer){
     });
 }
 
+/** This event listener handles the hover effect of orange player */
 const labelOrangePlayer = document.getElementById('label_orange_player');
 if(labelOrangePlayer){
     labelOrangePlayer.addEventListener('mouseover', () => {
@@ -127,6 +166,7 @@ if(labelOrangePlayer){
     });
 }
 
+/** This event listener handles the design of player selection if one state has changed */
 const inputPlayer = document.querySelectorAll<HTMLInputElement>('input[name = "player"]');
 inputPlayer.forEach(input => {
     input.addEventListener('change', () => {
@@ -137,6 +177,10 @@ inputPlayer.forEach(input => {
     });
 });
 
+/**
+ * This function is used to design the player selection if blue player is checked
+ * @param input - includes HTML input element
+ */
 function actionsBluePlayer(input:HTMLInputElement):void{
     if(input.value == 'blue'){
         if(input.checked){
@@ -149,6 +193,10 @@ function actionsBluePlayer(input:HTMLInputElement):void{
     }
 }
 
+/**
+ * This function is used to design the player selection if orange player is checked
+ * @param input - includes HTML input element
+ */
 function actionsOrangePlayer(input:HTMLInputElement):void{
     if(input.value == 'orange'){
         if(input.checked){
@@ -161,6 +209,7 @@ function actionsOrangePlayer(input:HTMLInputElement):void{
     }
 }
 
+/** This event listener handles the hover effect of board size selction 16 cards */
 const label16Cards = document.getElementById('label_16_cards');
 if(label16Cards){
     label16Cards.addEventListener('mouseover', () => {
@@ -174,6 +223,7 @@ if(label16Cards){
     });
 }
 
+/** This event listener handles the hover effect of board size selction 24 cards */
 const label24Cards = document.getElementById('label_24_cards');
 if(label24Cards){
     label24Cards.addEventListener('mouseover', () => {
@@ -187,6 +237,7 @@ if(label24Cards){
     });
 }
 
+/** This event listener handles the hover effect of board size selction 36 cards */
 const label36Cards = document.getElementById('label_36_cards');
 if(label36Cards){
     label36Cards.addEventListener('mouseover', () => {
@@ -200,6 +251,7 @@ if(label36Cards){
     });
 }
 
+/** These event listener handles the design of board size selection if one state is changed */
 const inputBoardSize = document.querySelectorAll<HTMLInputElement>('input[name = "board_size"]');
 inputBoardSize.forEach(input => {
     input.addEventListener('change', () => {
@@ -211,6 +263,10 @@ inputBoardSize.forEach(input => {
     });
 });
 
+/**
+ * This function is used to design the Board size selection if 16 cards is selected
+ * @param input - includes HTML input element
+ */
 function actions16Cards(input:HTMLInputElement):void{
     if(input.value == 'sixteen'){
         if(input.checked){
@@ -224,6 +280,10 @@ function actions16Cards(input:HTMLInputElement):void{
     }
 }
 
+/**
+ * This function is used to design the Board size selection if 24 cards is selected
+ * @param input - includes HTML input element
+ */
 function actions24Cards(input:HTMLInputElement):void{
     if(input.value == 'twentyfour'){
         if(input.checked){
@@ -237,6 +297,10 @@ function actions24Cards(input:HTMLInputElement):void{
     }
 }
 
+/**
+ * This function is used to design the Board size selection if 36 cards is selected
+ * @param input - includes HTML input element
+ */
 function actions36Cards(input:HTMLInputElement):void{
     if(input.value == 'thirtysix'){
         if(input.checked){
@@ -250,10 +314,16 @@ function actions36Cards(input:HTMLInputElement):void{
     }
 }
 
+/** This event listener set hover effect on code vibes theme after loading of page */
 document.addEventListener('DOMContentLoaded', () => {
     radioHoverEffect('span_code_theme', 'divider_code_theme');
 });
 
+/**
+ * This function is used to change the theme image 
+ * @param idImage - includes the id of image tag
+ * @param path - includes the path of image
+ */
 function changeThemeImage(idImage:string, path:string):void{
     let contentImgRef = document.getElementById(idImage) as HTMLImageElement;
     if(contentImgRef){contentImgRef.src = path}
