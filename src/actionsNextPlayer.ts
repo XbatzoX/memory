@@ -27,6 +27,10 @@ function changePlayerToOrange(isChanged:boolean):boolean{
     return changed;
 }
 
+/**
+ * This function ist used to set the player data if next player is orange
+ * @returns - a boolean information
+ */
 function setDataOrangePlayer():boolean{
     let changed = false;
     if(logic.currentPlayer == 'orange'){
@@ -56,6 +60,10 @@ function changePlayerToBlue(isChanged:boolean):boolean{
     return changed;
 }
 
+/**
+ * This function ist used to set the player data if next player is orange
+ * @returns - a boolean information
+ */
 function setDataBluePlayer():boolean{
     let changed = false;
     if(logic.currentPlayer == 'blue'){

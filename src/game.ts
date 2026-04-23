@@ -10,7 +10,7 @@ export let myGameObj:Settings;
 function createGame():void{
    if(isValid){
         localStorage.setItem('myGameSettings', JSON.stringify(data.gameSettings));
-        window.location.href = '/html/game.html';
+        window.location.href = 'game.html';
    }
 }
 
@@ -87,8 +87,8 @@ function checkCodeThemePlayer():void{
     if(myGameObj.theme == 'code_vibes'){
         const contentImgBlueRef = document.getElementById('icon_blue_player') as HTMLImageElement;
         const contentImgOrangeRef = document.getElementById('icon_orange_player') as HTMLImageElement;
-        if(contentImgBlueRef){contentImgBlueRef.src = '/assets/img/player_blue_code_theme.svg';}
-        if(contentImgOrangeRef){contentImgOrangeRef.src = '/assets/img/player_orange_code_theme.svg';}
+        if(contentImgBlueRef){contentImgBlueRef.src = '/memory/assets/img/player_blue_code_theme.svg';}
+        if(contentImgOrangeRef){contentImgOrangeRef.src = '/memory/assets/img/player_orange_code_theme.svg';}
     }
 }
 
@@ -97,8 +97,8 @@ function checkFoodThemePlayer():void{
     if(myGameObj.theme == 'food_theme'){
         const contentImgBlueRef = document.getElementById('icon_blue_player') as HTMLImageElement;
         const contentImgOrangeRef = document.getElementById('icon_orange_player') as HTMLImageElement;
-        if(contentImgBlueRef){contentImgBlueRef.src = '/assets/img/icon_blue_player_food_theme.svg';}
-        if(contentImgOrangeRef){contentImgOrangeRef.src = '/assets/img/icon_orange_player_food_theme.svg';}
+        if(contentImgBlueRef){contentImgBlueRef.src = '/memory/assets/img/icon_blue_player_food_theme.svg';}
+        if(contentImgOrangeRef){contentImgOrangeRef.src = '/memory/assets/img/icon_orange_player_food_theme.svg';}
     }
 }
 
@@ -112,7 +112,7 @@ function checkCurrentPlayer():void{
 function checkCurrentPlayerCodeVibes():void{
     if(myGameObj.theme == 'code_vibes'){
         const contentImgRef = document.getElementById('current_player_indication') as HTMLImageElement;
-        if(contentImgRef){contentImgRef.src = '/assets/icons/current_player_blue_code_theme.svg';}
+        if(contentImgRef){contentImgRef.src = '/memory/assets/icons/current_player_blue_code_theme.svg';}
     }
 }
 
@@ -122,7 +122,7 @@ function checkCurrentPlayerFoodTheme():void{
         const contentImgRef = document.getElementById('current_player_indication') as HTMLImageElement;
         const contentDivRef = document.getElementById('cp_indication_container') as HTMLDivElement;
         if(contentImgRef){
-            contentImgRef.src = '/assets/icons/icon_current_player_food_theme.svg';
+            contentImgRef.src = '/memory/assets/icons/icon_current_player_food_theme.svg';
         }
         if(contentDivRef){contentDivRef.style.backgroundColor = "#2BB1FF";}
 
@@ -139,7 +139,7 @@ function checkExitButton():void{
 function checkExitButtonCodeVibes():void{
     if(myGameObj.theme == 'code_vibes'){
         const contentImgRef = document.getElementById('exit_icon') as HTMLImageElement;
-        if(contentImgRef){contentImgRef.src = '/assets/icons/exit_icon_code_theme.svg';}
+        if(contentImgRef){contentImgRef.src = '/memory/assets/icons/exit_icon_code_theme.svg';}
     }
 }
 
@@ -147,7 +147,7 @@ function checkExitButtonCodeVibes():void{
 function checkExitButtonFoodTheme():void{
     if(myGameObj.theme == 'food_theme'){
         const contentImgRef = document.getElementById('exit_icon') as HTMLImageElement;
-        if(contentImgRef){contentImgRef.src = '/assets/icons/exit_icon_food_theme.svg';}
+        if(contentImgRef){contentImgRef.src = '/memory/assets/icons/exit_icon_food_theme.svg';}
     }
 }
 
@@ -172,8 +172,8 @@ function createEventListenerExitButtonFoodTheme():void{
  */
 function changeExitIcon(view:string):void{
     const contentImgRef = document.getElementById('exit_icon') as HTMLImageElement;
-    if(view == 'hover'){contentImgRef.src = '/assets/icons/exit_icon_code_theme.svg';}
-    if(view == 'normal'){contentImgRef.src = '/assets/icons/exit_icon_food_theme.svg';}
+    if(view == 'hover'){contentImgRef.src = '/memory/assets/icons/exit_icon_code_theme.svg';}
+    if(view == 'normal'){contentImgRef.src = '/memory/assets/icons/exit_icon_food_theme.svg';}
 }
 
 /**

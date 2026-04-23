@@ -129,7 +129,7 @@ function exitGame():void{
     if(contentBtnRef){
         contentBtnRef.addEventListener('click', () => {
             closeDialog();
-            window.location.href = '/index.html';
+            window.location.href = 'index.html';
         });
     }
 }

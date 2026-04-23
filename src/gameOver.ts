@@ -68,8 +68,8 @@ function checkCodeThemeGameOver():void{
     if(mySettings.theme == 'code_vibes'){
         const contentImgBlueRef = document.getElementById('over_blue_player') as HTMLImageElement;
         const contentImgOrangeRef = document.getElementById('over_orange_player') as HTMLImageElement;
-        if(contentImgBlueRef){contentImgBlueRef.src = '/assets/img/player_blue_code_theme.svg';}
-        if(contentImgOrangeRef){contentImgOrangeRef.src = '/assets/img/player_orange_code_theme.svg';}
+        if(contentImgBlueRef){contentImgBlueRef.src = '/memory/assets/img/player_blue_code_theme.svg';}
+        if(contentImgOrangeRef){contentImgOrangeRef.src = '/memory/assets/img/player_orange_code_theme.svg';}
     }
 }
 
@@ -78,8 +78,8 @@ function checkFoodThemeGameOver():void{
     if(mySettings.theme == 'food_theme'){
         const contentImgBlueRef = document.getElementById('over_blue_player') as HTMLImageElement;
         const contentImgOrangeRef = document.getElementById('over_orange_player') as HTMLImageElement;
-        if(contentImgBlueRef){contentImgBlueRef.src = '/assets/img/icon_blue_player_food_theme.svg';}
-        if(contentImgOrangeRef){contentImgOrangeRef.src = '/assets/img/icon_orange_player_food_theme.svg';}
+        if(contentImgBlueRef){contentImgBlueRef.src = '/memory/assets/img/icon_blue_player_food_theme.svg';}
+        if(contentImgOrangeRef){contentImgOrangeRef.src = '/memory/assets/img/icon_orange_player_food_theme.svg';}
     }
 }
 
@@ -98,6 +98,7 @@ function renderWinnerContainer():void{
         const contentWinnerSectionRef = document.getElementById('winner_section');
         if(contentSectionRef){contentSectionRef.classList.add('invisible');}
         if(contentWinnerSectionRef){
+            contentWinnerSectionRef.classList.remove('invisible');
             if(mySettings.theme == 'food_theme'){document.getElementById('body_game_over')!.style.backgroundColor = "white";}
             contentWinnerSectionRef.innerHTML = temp.getWinnerTemplate(mySettings.theme);
             checkWinnerIndication(resultObj.winner, mySettings.theme);
@@ -160,8 +161,8 @@ function checkWinnerImage(winner:string, theme:string):void{
  * @param winner - includes winner as string 
  */
 function winnerImageCodeVibes(contentImageRef:HTMLImageElement, winner:string):void{
-    if(winner == 'blue'){contentImageRef.src = '/assets/icons/blue_winner_code_vibes.svg';}
-    if(winner == 'orange'){contentImageRef.src = '/assets/icons/orange_winner_code_vibes.svg';}
+    if(winner == 'blue'){contentImageRef.src = '/memory/assets/icons/blue_winner_code_vibes.svg';}
+    if(winner == 'orange'){contentImageRef.src = '/memory/assets/icons/orange_winner_code_vibes.svg';}
 }
 
 /**

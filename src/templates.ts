@@ -8,7 +8,7 @@ export function renderHeader(id:string):string{
                 <div class="gameHeader__container-${id}">
                     <div class="playerContainer-${id} padding-s">
                         <div class="playerContainer-${id}__box">
-                            <img id="icon_blue_player" class="playerContainer-${id}__img" src="../assets/img/player_blue_code_theme.svg" alt="blue player icon">
+                            <img id="icon_blue_player" class="playerContainer-${id}__img" src="/memory/assets/img/player_blue_code_theme.svg" alt="blue player icon">
                             <span id="player_blue_value" class="playerContainer-${id}__valueBlue">0</span>
                         </div>
                         <div class="playerContainer-${id}__box">
@@ -144,7 +144,7 @@ export function getGameOverTemplate(theme:string):string{
 export function getWinnerTemplate(theme:string):string{
     return `<div class="winnerSection-${theme}">
                 <div class="winnerContainer-${theme}">
-                    <img id="id_confetti" class="winnerContainer-${theme}__image" src="/assets/icons/confetti_code_vibes.svg" alt="confetti image">
+                    <img id="id_confetti" class="winnerContainer-${theme}__image" src="/memory/assets/icons/confetti_code_vibes.svg" alt="confetti image">
                     <span class="winnerContainer-${theme}__winnerCaption">The winner is</span>
                     <span id="winner_indication" class="winnerContainer-${theme}__winnerIndication">Draw</span>
                     <div class="winnerContainer-${theme}__playerIconBox">

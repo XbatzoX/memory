@@ -6,9 +6,9 @@ import { Field } from './interfaces';
 import * as actions from './actionsNextPlayer';
 
 let imagesCodeVibes = data.codeVibesImageArr;
-let backSideCodeVibes = '/assets/icons/code_theme/card_bg_code_theme.svg';
+let backSideCodeVibes = '/memory/assets/icons/code_theme/card_bg_code_theme.svg';
 let imagesFoodTheme = data.foodThemeImageArr;
-let backSideFoodTheme = '/assets/icons/food_theme/bg_food_theme.svg';
+let backSideFoodTheme = '/memory/assets/icons/food_theme/bg_food_theme.svg';
 export let cardsArr:GameCard[];
 export let playerArr:GamePlayer[];
 export let currentPlayer:string = '';
@@ -147,12 +147,12 @@ function setCurrentPlayer(player:string):void{
     let contentImgRef = document.getElementById('current_player_indication') as HTMLImageElement;
     let contentDivRef = document.getElementById('cp_indication_container') as HTMLDivElement;
     if(player == 'blue'){
-        if(myGameObj.theme == 'code_vibes' && contentImgRef){contentImgRef.src = '/assets/icons/current_player_blue_code_theme.svg';}
+        if(myGameObj.theme == 'code_vibes' && contentImgRef){contentImgRef.src = '/memory/assets/icons/current_player_blue_code_theme.svg';}
         if(myGameObj.theme == 'food_theme' && contentDivRef){contentDivRef.style.backgroundColor = "#2BB1FF";}
         currentPlayer = 'blue';
     }
     if(player == 'orange'){
-        if(myGameObj.theme == 'code_vibes' && contentImgRef){contentImgRef.src = '/assets/icons/current_player_orange_code_theme.svg';}
+        if(myGameObj.theme == 'code_vibes' && contentImgRef){contentImgRef.src = '/memory/assets/icons/current_player_orange_code_theme.svg';}
         if(myGameObj.theme == 'food_theme' && contentDivRef){contentDivRef.style.backgroundColor = "#F58E39";}
         currentPlayer = 'orange';
     }
