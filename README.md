@@ -30,9 +30,8 @@ git clone https://github.com/XbatzoX/memory.git
 ### 📦 3. Abhängigkeiten installieren
 
 ```bash id="p3m91x"
-npm init -y       // package.json erzeugen
+// vite, typescript und sass installieren
 npm install -D vite typescript
-tsc --init       //tsconfig erstellen
 
 ```
 
