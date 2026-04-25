@@ -2,6 +2,66 @@
 
 Ein interaktives Memory-Spiel mit Fokus auf sauberer Architektur, moderner Toolchain und flexiblem Theme-System.
 
+## 🛠️ Projekt in VS Code einrichten
+
+Dieses Projekt wurde mit **Vite**, **TypeScript** und **SCSS** erstellt.
+Folge diesen Schritten, um das Projekt lokal einzurichten und zu starten.
+
+---
+
+### ✅ 1. Voraussetzungen
+
+Stelle sicher, dass folgende Programme installiert sind:
+
+* Node.js (min v.20)
+* npm (wird mit Node.js installiert)
+* Visual Studio Code
+
+---
+
+### 📥 2. Repository klonen
+
+```bash id="klf82a"
+git clone https://github.com/XbatzoX/memory.git
+```
+
+---
+
+### 📦 3. Abhängigkeiten installieren
+
+```bash id="p3m91x"
+npm init -y       // package.json erzeugen
+npm install -D vite typescript
+tsc --init       //tsconfig erstellen
+
+```
+
+---
+
+### 🚀 4. Entwicklungsserver starten
+
+```bash id="q7z4nb"
+npm run dev
+```
+
+Nach dem Start zeigt Vite eine lokale URL an, meistens:
+
+```
+http://localhost:5173/
+```
+
+Diese im Browser öffnen.
+
+---
+
+### 🏗️ 5. Produktions-Build erstellen
+
+```bash id="m82kqz"
+npm run build
+```
+
+Die optimierten Dateien werden im Ordner `/dist` erstellt.
+
 ---
 
 ## 🚀 Features
