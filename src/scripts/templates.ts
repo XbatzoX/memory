@@ -23,10 +23,10 @@ export function renderHeader(id:string):string{
                         </div>
                     </div>
                     <div class="exitFrame">
-                        <div id="exit_container" class="exitContainer-${id}">
+                        <button id="exit_container" class="exitContainer-${id}">
                             <img id="exit_icon" class="exitContainer-${id}__img" src="/assets/icons/exit_icon_code_theme.svg" alt="exit game icon">
                             <span id="exit_span" class="exitContainer-${id}__text">Exit game</span>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>`;
@@ -120,7 +120,7 @@ export function getSixCardInRowTemplate(i:number):string{
 export function getGameOverTemplate(theme:string):string{
     return `<div class="gameOver">
                 <span id="game_over_text" class="gameOver__text-${theme}">Game Over</span>
-                <div class="scoreContainer">
+                <article class="scoreContainer">
                     <span class="scoreText-${theme}">Final score</span>
                     <div class="playerContainer-${theme} padding-s">
                         <div class="playerContainer-${theme}__box">
@@ -132,7 +132,7 @@ export function getGameOverTemplate(theme:string):string{
                             <span id="over_orange_value" class="playerContainer-${theme}__valueOrange">0</span>
                         </div>
                     </div>
-                </div>
+                </article>
             </div>`;
 }
 
@@ -151,9 +151,9 @@ export function getWinnerTemplate(theme:string):string{
                         <img id="winner_icon" class="winnerContainer-${theme}__playerIcon" src="/memory/assets/icons/blue_winner_code_vibes.svg" alt="chess player icon">
                     </div>
                     <div class="exitFrame">
-                        <div id="back_game_over_container" class="exitContainerGameOver-${theme}">
+                        <button id="back_game_over_container" class="exitContainerGameOver-${theme}">
                             <span id="back_game_over_span" class="exitContainerGameOver-${theme}__text">Back to start</span>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>`;
@@ -170,13 +170,13 @@ export function getDialogTemplate(theme:string):string{
                     Are you sure you want to quit the game?
                 </span>
                 <div class="dialogCtrlBox">
-                    <div id="close_dialog_btn" class="closeDialogBtn-${theme}">
+                    <button id="close_dialog_btn" class="closeDialogBtn-${theme}">
                         <span class="closeDialogBtn-${theme}__text">Back to game</span>
-                    </div>
+                    </button>
                     <div class="exitGameBtnFrame-${theme}">
-                        <div id="exit_game_btn" class="exitGameBtn-${theme}">
+                        <button id="exit_game_btn" class="exitGameBtn-${theme}">
                             <span class="exitGameBtn-${theme}__text">Exit game</span>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>`;
