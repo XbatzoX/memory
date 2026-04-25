@@ -1,7 +1,7 @@
-import * as data from './dataObj';
-import * as temp from './templates';
-import {isValid} from './stateSettings';
-import {Settings} from './interfaces';
+import * as data from '../dataStructure/dataObj';
+import * as temp from '../templates';
+import {isValid} from '../settings/stateSettings';
+import {Settings} from '../dataStructure/interfaces';
 import * as logic from './gameLogic';
 
 export let myGameObj:Settings;
@@ -213,7 +213,7 @@ function createClickEventForCard():void{
         const contentCardRef = document.getElementById('card_' + index);
         if(contentCardRef){
             contentCardRef.addEventListener('click', e => {
-                if(getDataOfCard(index)){
+                if(getDataOfCard(index) && (hasPlayerPermission())){
                     const card = (e.target as HTMLElement).closest('.card') as HTMLDivElement;
                     if(card){card.classList.toggle('is-flipped');}
                     match = logic.setDataAfterFlip(index);
@@ -223,6 +223,18 @@ function createClickEventForCard():void{
             });
         }   
     }
+}
+
+/**
+ * This functions checks if one player has the permission to play
+ * @returns - a boolean information
+ */
+function hasPlayerPermission():boolean{
+    let permission = false;
+    if(logic.playerArr[0].permission || logic.playerArr[1].permission){
+        permission = true;
+    }
+    return permission;
 }
 
 /** This functions execute actions after match of card pair */

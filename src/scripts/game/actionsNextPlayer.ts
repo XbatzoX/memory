@@ -88,7 +88,9 @@ function setDataForNextPlayer():void{
     for (let index = 0; index < logic.playerArr.length; index++) {
         if(logic.playerArr[index].name == logic.currentPlayer){
             logic.playerArr[index].attempts = 2;
-            logic.playerArr[index].permission = true;
+            setTimeout(() => {
+                logic.playerArr[index].permission = true;
+            },1500);
         }
     }
 }

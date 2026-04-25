@@ -1,7 +1,7 @@
-import * as data from './dataObj';
-import * as temp from './templates';
-import { GameResult } from './interfaces';
-import { Settings } from './interfaces';
+import * as data from '../dataStructure/dataObj';
+import * as temp from '../templates';
+import { GameResult } from '../dataStructure/interfaces';
+import { Settings } from '../dataStructure/interfaces';
 
 let resultObj:GameResult;
 let mySettings:Settings;

@@ -1,6 +1,6 @@
-import { Player } from "./interfaces";
-import { CardValues } from "./interfaces";
-import { Pickedcards } from "./interfaces";
+import { Player } from "../dataStructure/interfaces";
+import { CardValues } from "../dataStructure/interfaces";
+import { Pickedcards } from "../dataStructure/interfaces";
 
 export class GamePlayer implements Player{
     name: string;

@@ -1,5 +1,5 @@
 import * as temp from './templates';
-import { myGameObj } from './game';
+import { myGameObj } from './game/game';
 
 /**
  * This function is used to create Event Listener after loading of page
@@ -83,7 +83,7 @@ async function closeDialogWithSlide():Promise<void>{
  * @param ms - includes waiting time in ms
  * @returns - a promise 
  */
-function timeout(ms:number):Promise<void>{
+export function timeout(ms:number):Promise<void>{
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 

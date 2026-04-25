@@ -1,9 +1,10 @@
 import { myGameObj } from './game';
-import * as data from './dataObj';
-import { GameCard } from './card.class';
-import { GamePlayer } from './player.class';
-import { Field } from './interfaces';
+import * as data from '../dataStructure/dataObj';
+import { GameCard } from '../classes/card.class';
+import { GamePlayer } from '../classes/player.class';
+import { Field } from '../dataStructure/interfaces';
 import * as actions from './actionsNextPlayer';
+import * as dialog from '../dialog';
 
 let imagesCodeVibes = data.codeVibesImageArr;
 let backSideCodeVibes = '/memory/assets/icons/code_theme/card_bg_code_theme.svg';
@@ -190,13 +191,16 @@ function checkMatch():boolean{
                 playerArr[index].setAttempts(2);
                 match = true;
             }else{
-                actions.flipBackWithoutMatch();
-                actions.changePlayer();
+                changePlayerAfterFlip(); 
             }
             break;
         }
-    }
-    return match;
+    }return match;
+}
+
+async function changePlayerAfterFlip():Promise<void>{
+    actions.flipBackWithoutMatch();
+    actions.changePlayer();
 }
 
 /**
@@ -349,6 +353,10 @@ function attempts1CardPos2(i:number, card:string, cardNumber:number):void{
     }
 }
 
+/**
+ * This function is used to set the current player
+ * @param player - includes the actual player
+ */
 export function setPlayer(player:string):void{
     currentPlayer = player;
 }

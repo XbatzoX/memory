@@ -1,4 +1,4 @@
-import * as data from './dataObj';
+import * as data from '../dataStructure/dataObj';
 
 let themeArr = ['code_vibes', 'food_theme'];
 let playerArr = ['blue', 'orange'];

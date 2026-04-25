@@ -148,7 +148,7 @@ export function getWinnerTemplate(theme:string):string{
                     <span class="winnerContainer-${theme}__winnerCaption">The winner is</span>
                     <span id="winner_indication" class="winnerContainer-${theme}__winnerIndication">Draw</span>
                     <div class="winnerContainer-${theme}__playerIconBox">
-                        <img id="winner_icon" class="winnerContainer-${theme}__playerIcon" src="/assets/icons/blue_winner_code_vibes.svg" alt="chess player icon">
+                        <img id="winner_icon" class="winnerContainer-${theme}__playerIcon" src="/memory/assets/icons/blue_winner_code_vibes.svg" alt="chess player icon">
                     </div>
                     <div class="exitFrame">
                         <div id="back_game_over_container" class="exitContainerGameOver-${theme}">

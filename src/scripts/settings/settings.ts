@@ -1,4 +1,4 @@
-import * as data from './dataObj';
+import * as data from '../dataStructure/dataObj';
 import * as stateSettings from './stateSettings';
 
 let validTheme = false;

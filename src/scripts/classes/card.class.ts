@@ -1,5 +1,5 @@
-import {Card} from './interfaces';
-import { Field } from './interfaces';
+import {Card} from '../dataStructure/interfaces';
+import { Field } from '../dataStructure/interfaces';
 
 export class GameCard implements Card{
     frontImage: string;
